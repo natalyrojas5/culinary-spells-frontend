@@ -1,3 +1,5 @@
+import { Navigation, Footer } from "@/modules/core/components";
+
 export const LayoutMain = ({
   children,
 }: Readonly<{
@@ -5,9 +7,9 @@ export const LayoutMain = ({
 }>) => {
   return (
     <>
-      <p>Navbar</p>
-      LayoutMain
-      <p>Footer</p>
+      <Navigation />
+      <main className="content">{children}</main>
+      <Footer />
     </>
   );
 };
