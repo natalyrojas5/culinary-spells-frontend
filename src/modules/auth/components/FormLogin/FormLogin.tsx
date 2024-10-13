@@ -2,7 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { InputPassword, InputWithLabel } from "@/modules/core/components";
-import { BUTTON, PATH } from "@/modules/core/constants";
+import { PATH } from "@/modules/auth/constants";
+import { BUTTON } from "@/modules/core/constants";
 import { fontJollyLodger, fontMonomaniacOne } from "@/modules/core/utils";
 
 export const FormLogin = () => {

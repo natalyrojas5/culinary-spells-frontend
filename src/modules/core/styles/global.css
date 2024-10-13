@@ -31,6 +31,10 @@
   background-color: var(--c-purple-600);
 }
 
+.bg-purple-linear {
+  background-color: var(--c-purple-linear);
+}
+
 .bg-orange {
   background-color: var(--c-orange);
 }
