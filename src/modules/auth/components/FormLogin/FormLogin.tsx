@@ -20,7 +20,7 @@ export const FormLogin = () => {
       />
       <InputPassword
         label="Contraseña"
-        name="email"
+        name="password"
         placeholder="Ingresa tu contraseña"
       />
 
