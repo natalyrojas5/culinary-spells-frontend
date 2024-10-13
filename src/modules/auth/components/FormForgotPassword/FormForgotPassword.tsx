@@ -1,7 +1,8 @@
 "use client";
 
 import { InputWithLabel } from "@/modules/core/components";
-import { BUTTON, PATH } from "@/modules/core/constants";
+import { PATH } from "@/modules/auth/constants";
+import { BUTTON } from "@/modules/core/constants";
 import { fontJollyLodger, fontMonomaniacOne } from "@/modules/core/utils";
 import { useRouter } from "next/navigation";
 

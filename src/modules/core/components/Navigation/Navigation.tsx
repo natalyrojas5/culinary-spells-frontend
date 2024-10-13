@@ -5,7 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ghost from "@/modules/core/assets/ghost.svg";
 import { fontJollyLodger } from "@/modules/core/utils";
-import { BUTTON, PATH } from "@/modules/core/constants";
+import { PATH } from "@/modules/auth/constants";
+import { BUTTON } from "@/modules/core/constants";
 import { UserLogged } from "../UserLogged";
 
 export const Navigation = () => {
