@@ -13,7 +13,7 @@ export const ViewHome = () => {
     orange: { size, type },
   } = BUTTON;
   return (
-    <section className="text-white flex gap-4 items-center mt-5">
+    <section className="text-white flex gap-4 items-center">
       <div>
         <h1 className={`text-4xl ${fontMonomaniacOne.className} mb-4`}>
           Recetas que Encantan y Aterrorizan
