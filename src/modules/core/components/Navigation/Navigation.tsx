@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import ghost from "@/modules/core/assets/ghost.svg";
 import { fontJollyLodger } from "@/modules/core/utils";
-import { BUTTON } from "@/modules/core/constants";
+import { BUTTON, PATH } from "@/modules/core/constants";
 import { UserLogged } from "../UserLogged";
 
 export const Navigation = () => {
@@ -10,7 +13,9 @@ export const Navigation = () => {
     orange: { size, type },
   } = BUTTON;
 
-  const isLogged = true;
+  const isLogged = false;
+  const pathname = usePathname();
+  const isPathHome = pathname === "/";
 
   return (
     <header
@@ -21,13 +26,19 @@ export const Navigation = () => {
           <Image src={ghost} width={70} height={60} alt="Ghost" />
           <div>
             <h1 className="text-4xl c-txt-orange">Hechizos</h1>
-            <h2 className="text-3xl text-white">Culinarios</h2>
+            <h2 className="text-3xl text-white">Culinarios </h2>
           </div>
         </Link>
         {isLogged ? (
           <UserLogged />
+        ) : isPathHome ? (
+          <Link href={PATH.login} className={`${size.big} ${type.base}`}>
+            Iniciar Sesión
+          </Link>
         ) : (
-          <button className={`${size.big} ${type.base}`}>Iniciar Sesión</button>
+          <Link href="/" className={`${size.big} ${type.base}`}>
+            Home
+          </Link>
         )}
       </nav>
     </header>
