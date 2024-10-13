@@ -9,7 +9,7 @@ export const ViewLogin = () => {
       >
         <h1 className="text-5xl text-white">Inicio de Sesión</h1>
         <button className="c-txt-orange text-3xl underline">
-          Crear Cuenta
+          Crear cuenta
         </button>
       </header>
 
