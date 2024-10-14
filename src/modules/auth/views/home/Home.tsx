@@ -12,7 +12,7 @@ import { PATH } from "@/modules/recipes/constants";
 
 export const ViewHome = () => {
   const {
-    orange: { size, type },
+    goldenYellow: { size, type },
   } = BUTTON;
   return (
     <section className="text-white flex gap-4 items-center">

@@ -8,7 +8,7 @@ export const ViewLogin = () => {
         className={`${fontMonomaniacOne.className} flex flex-col items-center gap-2 mb-4`}
       >
         <h1 className="text-5xl text-white">Inicio de Sesión</h1>
-        <button className="c-txt-orange text-3xl underline">
+        <button className="c-txt-golden-yellow text-3xl underline">
           Crear cuenta
         </button>
       </header>

@@ -4,7 +4,7 @@ import { fontJollyLodger } from "@/modules/core/utils";
 
 export const FormNewPassword = () => {
   const {
-    orange: { size, type },
+    goldenYellow: { size, type },
   } = BUTTON;
   return (
     <form className="flex flex-col gap-4 items-center w-[500px] mx-auto mt-8">

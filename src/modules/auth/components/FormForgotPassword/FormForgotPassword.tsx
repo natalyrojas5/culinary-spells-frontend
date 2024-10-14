@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 export const FormForgotPassword = () => {
   const {
-    orange: { size, type },
+    goldenYellow: { size, type },
   } = BUTTON;
   const router = useRouter();
   return (
@@ -21,7 +21,7 @@ export const FormForgotPassword = () => {
       />
       <button
         type="button"
-        className={`${fontMonomaniacOne.className} c-txt-orange text-3xl underline`}
+        className={`${fontMonomaniacOne.className} c-txt-golden-yellow text-3xl underline`}
         onClick={() => router.push(PATH.login)}
       >
         Recordé mi contraseña

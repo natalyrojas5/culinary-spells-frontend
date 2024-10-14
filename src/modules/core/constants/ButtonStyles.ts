@@ -5,9 +5,9 @@ const sizeStyles = {
 };
 
 export const BUTTON = {
-  orange: {
+  goldenYellow: {
     type: {
-      base: `${baseType} text-black bg-orange hover:bg-yellow-600`,
+      base: `${baseType} text-black bg-golden-yellow hover:bg-yellow-600`,
     },
     size: sizeStyles,
   },

@@ -21,7 +21,7 @@ export const InputWithLabel = ({
         {label}
       </label>
       <input
-        className="p-3 rounded-lg shadow-lg w-full text-2xl border-4 c-border-orange"
+        className="p-3 rounded-lg shadow-lg w-full text-2xl border-4 c-border-golden-yellow"
         id={name}
         name={name}
         placeholder={placeholder}
