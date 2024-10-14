@@ -31,7 +31,7 @@ export const SelectWithLabel = ({
         <option disabled value="">{placeholder}</option>
         {options.map(option => {
             return (
-                <option value={option.value}>{option.text}</option>
+                <option key={option.value} value={option.value}>{option.text}</option>
             )
         })}
       </select>
