@@ -8,7 +8,7 @@ export const LayoutMain = ({
   return (
     <>
       <Navigation />
-      <main className="content">{children}</main>
+      <main className="content relative">{children}</main>
       <Footer />
     </>
   );

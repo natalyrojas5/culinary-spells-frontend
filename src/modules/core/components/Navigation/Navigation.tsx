@@ -20,7 +20,7 @@ export const Navigation = () => {
 
   return (
     <header
-      className={`${fontJollyLodger.className} bg-purple-700 p-6 border-b-8 c-border-orange`}
+      className={`${fontJollyLodger.className} bg-purple-700 p-6 border-b-8 c-border-orange sticky top-0 w-full z-10`}
     >
       <nav className="flex justify-between items-center content">
         <Link href="/" className="flex items-center gap-4">

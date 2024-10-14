@@ -27,8 +27,16 @@
   background-color: var(--c-purple-700);
 }
 
+.c-text-purple-700 {
+  color: var(--c-purple-700);
+}
+
 .bg-purple-600 {
   background-color: var(--c-purple-600);
+}
+
+.c-text-purple-600 {
+  color: var(--c-purple-600);
 }
 
 .bg-purple-linear {

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   fontJollyLodger,
   fontMali,
@@ -7,6 +8,7 @@ import {
 import mr_pumpkin from "@/modules/auth/assets/mr_pumpkin.svg";
 import pumpkins from "@/modules/auth/assets/pumpkins.svg";
 import { BUTTON } from "@/modules/core/constants";
+import { PATH } from "@/modules/auth/constants";
 
 export const ViewHome = () => {
   const {
@@ -24,12 +26,13 @@ export const ViewHome = () => {
           Desde postres embrujados hasta bebidas macabras, encuentra platos
           <br /> únicos que harán de tu mesa un verdadero festín de terror.
         </p>
-        <button
+        <Link
           className={`
           ${size.medium} ${type.base} ${fontJollyLodger.className}`}
+          href={PATH.recipes}
         >
           Conocer recetas
-        </button>
+        </Link>
         <Image src={pumpkins} width={620} height={200} alt="Pumpkins" />
       </div>
       <Image src={mr_pumpkin} width={320} height={200} alt="Mr. Pumpkin" />
