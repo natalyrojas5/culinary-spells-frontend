@@ -5,6 +5,7 @@ interface IProps {
   placeholder: string;
   name: string;
   type: "text" | "email";
+  required ?: boolean | undefined
 }
 
 export const InputWithLabel = ({
@@ -12,6 +13,7 @@ export const InputWithLabel = ({
   placeholder,
   name,
   type = "text",
+  required
 }: IProps) => {
   return (
     <fieldset
@@ -26,6 +28,7 @@ export const InputWithLabel = ({
         name={name}
         placeholder={placeholder}
         type={type}
+        required={required}
       />
     </fieldset>
   );

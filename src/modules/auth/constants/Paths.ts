@@ -3,4 +3,5 @@ export const PATH = {
   forgot_password: "olvide-contrasena",
   new_password: "nueva-contrasena",
   recipes: "recetas",
+  create_account : "registro-cuenta"
 };

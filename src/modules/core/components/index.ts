@@ -4,3 +4,4 @@ export * from "./InputWithLabel";
 export * from "./InputPassword";
 export * from "./Recipes";
 export * from "./Recipe";
+export * from "./SelectWithLabel"
