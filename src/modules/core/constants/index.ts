@@ -1,2 +1,2 @@
 export * from "./ButtonStyles";
-export * from "./SelectInfo"
+export * from "./Genders"
