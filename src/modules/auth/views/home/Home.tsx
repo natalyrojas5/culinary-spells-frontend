@@ -8,7 +8,7 @@ import {
 import mr_pumpkin from "@/modules/auth/assets/mr_pumpkin.svg";
 import pumpkins from "@/modules/auth/assets/pumpkins.svg";
 import { BUTTON } from "@/modules/core/constants";
-import { PATH } from "@/modules/auth/constants";
+import { PATH } from "@/modules/recipes/constants";
 
 export const ViewHome = () => {
   const {

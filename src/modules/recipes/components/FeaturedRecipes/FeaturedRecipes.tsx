@@ -1,4 +1,4 @@
-import { Recipe } from "@/modules/core/components";
+import { Recipe } from "@/modules/recipes/components";
 import { fontMonomaniacOne } from "@/modules/core/utils";
 
 export const FeaturedRecipes = () => {

@@ -28,7 +28,7 @@ export const FormLogin = () => {
       <button
         type="button"
         className={`${fontMonomaniacOne.className} c-txt-orange text-3xl underline`}
-        onClick={() => router.push(PATH.forgot_password)}
+        onClick={() => router.push(PATH.forgotPassword)}
       >
         Olvidé mi contraseña
       </button>
