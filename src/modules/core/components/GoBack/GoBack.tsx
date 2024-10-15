@@ -5,7 +5,11 @@ import { fontJollyLodger } from "@/modules/core/utils";
 import { useRouter } from "next/navigation";
 import { IoIosArrowBack } from "react-icons/io";
 
-export const GoBack = () => {
+interface IProps {
+  description : string;
+}
+
+export const GoBack = ({ description } : IProps) => {
   const {
     purpleDark: { size, type },
   } = BUTTON;
@@ -19,7 +23,7 @@ export const GoBack = () => {
       onClick={() => router.back()}
     >
       <IoIosArrowBack size={45} />
-      Regresar{" "}
+      {description} 
     </button>
   );
 };
