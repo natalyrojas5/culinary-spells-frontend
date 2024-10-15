@@ -23,4 +23,10 @@ export const BUTTON = {
     },
     size: sizeStyles,
   },
+  purpleDark: {
+    type: {
+      base: `${baseType} text-white bg-purple-700`,
+    },
+    size: sizeStyles,
+  },
 };

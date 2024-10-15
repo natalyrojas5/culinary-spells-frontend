@@ -1,9 +1,13 @@
+"use client";
+
 import clsx from "clsx";
 import Image from "next/image";
+import { FaRegHeart } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 import empty from "@/modules/core/assets/empty.jpg";
 import { fontJollyLodger, fontMali } from "@/modules/core/utils";
 import { BUTTON } from "@/modules/core/constants";
-import { FaRegHeart } from "react-icons/fa";
+import { PATH } from "@/modules/recipes/constants";
 
 interface Props {
   isHighlighted?: boolean;
@@ -13,6 +17,8 @@ export const Recipe = ({ isHighlighted = false }: Props) => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
+  const router = useRouter();
+
   return (
     <aside
       className={clsx(
@@ -52,6 +58,7 @@ export const Recipe = ({ isHighlighted = false }: Props) => {
       <button
         className={`
           ${size.medium} ${type.base} ${fontJollyLodger.className} mt-6`}
+        onClick={() => router.push(`${PATH.recipe}/1`)}
       >
         Ver detalle
       </button>
