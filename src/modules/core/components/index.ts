@@ -5,4 +5,5 @@ export * from "./InputPassword";
 export * from "./GoBack";
 export * from "./SelectWithLabel";
 export * from "./InputFile"
+export * from "./InputSearch"
 export * from "./MultipleInput"

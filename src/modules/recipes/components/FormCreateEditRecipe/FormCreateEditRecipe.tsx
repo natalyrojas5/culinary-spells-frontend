@@ -4,8 +4,11 @@ import { fontJollyLodger } from "@/modules/core/utils";
 import { AddEditSteps } from "../AddEditSteps";
 import { TextArea } from "@/modules/core/components/TextArea";
 
+interface IProps{
+    view:string
+}
 
-export const FormCreateEditRecipe = () => {
+export const FormCreateEditRecipe = ({view = 'CREATED' } : IProps) => {
     const {
         goldenYellow: { size, type },
       } = BUTTON;
@@ -22,11 +25,12 @@ export const FormCreateEditRecipe = () => {
                 label="Imagen Principal*"
                 placeholder="Subir Receta Principal"
             />
-            <InputWithLabel
+            <SelectWithLabel
                 label="Tipo de Receta*"
                 name=""
-                type="text"
                 placeholder="Selecciona tipo de receta"
+                required
+                options={[]}
             />
             <InputFile
                 name=""
