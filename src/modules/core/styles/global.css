@@ -16,7 +16,7 @@
   --c-purple-600: #2f0367;
   --c-purple-700: #200543;
   --c-golden-yellow: #ffbb0b;
-  --c-orange-300: #ff9a26;
+  --c-orange: #ff9a26;
   --c-white: #fff;
   --c-black: #000;
   --c-gray: #5e5e5e;
@@ -49,6 +49,10 @@
 
 .c-border-golden-yellow {
   border-color: var(--c-golden-yellow);
+}
+
+.bg-orange {
+  background-color: var(--c-orange);
 }
 
 .content {
