@@ -8,9 +8,15 @@ interface IProps {
   label: string;
   placeholder: string;
   name: string;
+  required?: boolean;
 }
 
-export const InputPassword = ({ label, placeholder, name }: IProps) => {
+export const InputPassword = ({
+  label,
+  placeholder,
+  name,
+  required = false,
+}: IProps) => {
   const [isInputText, setIsInputText] = useState(false);
 
   const propsIcon = {
@@ -31,6 +37,7 @@ export const InputPassword = ({ label, placeholder, name }: IProps) => {
           id={name}
           name={name}
           placeholder={placeholder}
+          required={required}
           type={isInputText ? "text" : "password"}
         />
         {isInputText ? (
