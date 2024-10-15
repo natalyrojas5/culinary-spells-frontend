@@ -1,13 +1,9 @@
-'use client'
+"use client";
+
 import Image from "next/image";
 import empty from "@/modules/core/assets/empty.jpg";
-import { MODAL } from "@/modules/auth/constants";
 import { GiPodiumWinner } from "react-icons/gi";
-import { useModalStore } from "@/modules/core/stores";
-import {
-  fontJollyLodger,
-  fontMonomaniacOne,
-} from "@/modules/core/utils";
+import { fontJollyLodger, fontMonomaniacOne } from "@/modules/core/utils";
 import { BUTTON } from "@/modules/core/constants";
 import { RecipeCreatorSmall } from "../RecipeCreatorSmall";
 
@@ -15,7 +11,6 @@ export const FeaturedRecipe = () => {
   const {
     purple: { size, type },
   } = BUTTON;
-  const toggle = useModalStore((state) => state.toggle);
 
   return (
     <section className="flex gap-8 items-center mt-10 p-8 border-4 bg-golden-yellow rounded-lg c-border-golden-yellow">
@@ -44,8 +39,7 @@ export const FeaturedRecipe = () => {
         <div className="flex justify-end">
           <button
             className={`${size.medium} ${type.base} ${fontJollyLodger.className} mt-3`}
-            onClick={() => toggle({ isOpen: true, name: MODAL.accessRecipe })}
-            >
+          >
             Ver detalle
           </button>
         </div>

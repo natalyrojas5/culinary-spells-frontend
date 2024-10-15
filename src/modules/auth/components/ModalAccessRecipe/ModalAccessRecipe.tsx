@@ -7,18 +7,19 @@ import Link from "next/link";
 
 export const ModalAccessRecipe = () => {
   const {
-    orange: { size, type },
+    goldenYellow: { size, type },
   } = BUTTON;
   return (
     <Modal name={MODAL.accessRecipe} title="Accede a Recetas Exclusivas">
       <aside className="text-center">
         <p className={`text-xl ${fontMali.className} mb-8`}>
-        Regístrate ahora para descubrir más recetas deliciosas y acceder a todos los detalles que necesitas para cocinar como un chef.
+          Regístrate ahora para descubrir más recetas deliciosas y acceder a
+          todos los detalles que necesitas para cocinar como un chef.
         </p>
         <Link
           href={PATH.login}
           className={`
-          ${size.medium} ${type.base} ${fontJollyLodger.className} mx-auto `}
+          ${size.big} ${type.base} ${fontJollyLodger.className} mx-auto `}
         >
           Registrarme
         </Link>
