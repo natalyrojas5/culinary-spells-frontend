@@ -9,6 +9,7 @@ interface IProps {
   placeholder: string;
   name: string;
   required?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputPassword = ({
@@ -16,6 +17,7 @@ export const InputPassword = ({
   placeholder,
   name,
   required = false,
+  onChange,
 }: IProps) => {
   const [isInputText, setIsInputText] = useState(false);
 
@@ -39,6 +41,7 @@ export const InputPassword = ({
           placeholder={placeholder}
           required={required}
           type={isInputText ? "text" : "password"}
+          onChange={onChange}
         />
         {isInputText ? (
           <FaEyeSlash {...propsIcon} onClick={() => setIsInputText(false)} color="gray" />

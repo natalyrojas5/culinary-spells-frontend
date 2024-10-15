@@ -6,6 +6,7 @@ interface IProps {
   name: string;
   type: "text" | "email";
   required?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputWithLabel = ({
@@ -14,6 +15,7 @@ export const InputWithLabel = ({
   name,
   type = "text",
   required,
+  onChange,
 }: IProps) => {
   return (
     <fieldset
@@ -29,6 +31,7 @@ export const InputWithLabel = ({
         placeholder={placeholder}
         type={type}
         required={required}
+        onChange={onChange}
       />
     </fieldset>
   );
