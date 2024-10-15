@@ -29,4 +29,10 @@ export const BUTTON = {
     },
     size: sizeStyles,
   },
+  orange: {
+    type: {
+      base: `${baseType} text-black bg-orange hover:bg-orange-500`,
+    },
+    size: sizeStyles,
+  },
 };
