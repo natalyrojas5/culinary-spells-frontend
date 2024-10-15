@@ -19,7 +19,7 @@ export const GoBack = () => {
       onClick={() => router.back()}
     >
       <IoIosArrowBack size={45} />
-      Agregar Receta
+      Regresar{" "}
     </button>
   );
 };
