@@ -10,7 +10,7 @@ interface State extends StateToggle {
 }
 
 export const useModalStore = create<State>()((set) => ({
-  isOpen: true,
+  isOpen: false,
   name: "",
   toggle: ({ isOpen, name }: StateToggle) => set({ isOpen, name }),
 }));

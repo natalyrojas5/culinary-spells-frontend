@@ -1,9 +1,10 @@
-import { Banner } from "@/modules/auth/components";
-import { Recipes } from "@/modules/recipes/components";
+import { Banner, ModalAccessRecipe } from "@/modules/auth/components";
+
 import {
   AddRecipe,
   FeaturedRecipe,
   FeaturedRecipes,
+  Recipes,
 } from "@/modules/recipes/components";
 
 export const ViewRecipes = () => {
@@ -14,6 +15,7 @@ export const ViewRecipes = () => {
       <FeaturedRecipes />
       <Recipes />
       <AddRecipe />
+      <ModalAccessRecipe />
     </>
   );
 };
