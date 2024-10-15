@@ -25,9 +25,8 @@ export const FormCreateAccount = ({ countries }: IProps) => {
       <InputWithLabel
         label="Apellidos (opcional)"
         name="lastname"
-        type="email"
+        type="text"
         placeholder="Ingresa tus apellidos"
-        required
       />
       <InputWithLabel
         label="Correo electrónico"
