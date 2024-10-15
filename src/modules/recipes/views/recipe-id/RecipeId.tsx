@@ -4,7 +4,7 @@ import { DetailRecipe } from "@/modules/recipes/components";
 export const ViewRecipeId = () => {
   return (
     <>
-      <GoBack />
+      <GoBack  description="Agregar Receta"/>
       <DetailRecipe />
     </>
   );
