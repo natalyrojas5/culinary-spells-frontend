@@ -41,9 +41,9 @@ export const InputPassword = ({
           type={isInputText ? "text" : "password"}
         />
         {isInputText ? (
-          <FaEyeSlash {...propsIcon} onClick={() => setIsInputText(false)} />
+          <FaEyeSlash {...propsIcon} onClick={() => setIsInputText(false)} color="gray" />
         ) : (
-          <FaEye {...propsIcon} onClick={() => setIsInputText(true)} />
+          <FaEye {...propsIcon} onClick={() => setIsInputText(true)}  color="gray"/>
         )}
       </div>
     </fieldset>
