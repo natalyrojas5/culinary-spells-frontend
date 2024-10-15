@@ -1,11 +1,7 @@
 import Image from "next/image";
 import empty from "@/modules/core/assets/empty.jpg";
 import { GiPodiumWinner } from "react-icons/gi";
-import {
-  fontJollyLodger,
-  fontMali,
-  fontMonomaniacOne,
-} from "@/modules/core/utils";
+import { fontJollyLodger, fontMonomaniacOne } from "@/modules/core/utils";
 import { BUTTON } from "@/modules/core/constants";
 import { RecipeCreatorSmall } from "../RecipeCreatorSmall";
 
@@ -14,7 +10,7 @@ export const FeaturedRecipe = () => {
     purple: { size, type },
   } = BUTTON;
   return (
-    <section className="flex gap-8 items-center mt-10 p-8 border-4 bg-orange rounded-lg c-border-orange">
+    <section className="flex gap-8 items-center mt-10 p-8 border-4 bg-golden-yellow rounded-lg c-border-golden-yellow">
       <Image
         src={empty}
         width={900}

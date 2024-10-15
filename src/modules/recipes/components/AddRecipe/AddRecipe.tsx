@@ -4,7 +4,7 @@ import { IoIosAdd } from "react-icons/io";
 
 export const AddRecipe = () => {
   const {
-    orange: { size, type },
+    goldenYellow: { size, type },
   } = BUTTON;
   return (
     <button

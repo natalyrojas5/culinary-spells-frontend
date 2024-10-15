@@ -8,10 +8,15 @@ interface IProps {
   label: string;
   placeholder: string;
   name: string;
-  required: boolean | undefined
+  required?: boolean;
 }
 
-export const InputPassword = ({ label, placeholder, name , required }: IProps) => {
+export const InputPassword = ({
+  label,
+  placeholder,
+  name,
+  required = false,
+}: IProps) => {
   const [isInputText, setIsInputText] = useState(false);
 
   const propsIcon = {
@@ -28,7 +33,7 @@ export const InputPassword = ({ label, placeholder, name , required }: IProps) =
       </label>
       <div className="w-full relative">
         <input
-          className="p-3 rounded-lg shadow-lg w-full text-2xl border-4 c-border-orange"
+          className="p-3 rounded-lg shadow-lg w-full text-2xl border-4 c-border-golden-yellow"
           id={name}
           name={name}
           placeholder={placeholder}

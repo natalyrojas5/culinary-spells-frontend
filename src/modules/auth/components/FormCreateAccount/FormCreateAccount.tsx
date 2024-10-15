@@ -2,12 +2,12 @@
 
 import { InputPassword, InputWithLabel } from "@/modules/core/components";
 import { SelectWithLabel } from "@/modules/core/components/SelectWithLabel";
-import { BUTTON, GENDERINFO } from "@/modules/core/constants";
+import { BUTTON, SELECT_GENDER } from "@/modules/core/constants";
 import { fontJollyLodger } from "@/modules/core/utils";
 
 export const FormCreateAccount = () => {
   const {
-    orange: { size, type },
+    goldenYellow: { size, type },
   } = BUTTON;
   return (
     <form className="flex flex-col gap-4 items-center w-[500px] mx-auto mt-8">
@@ -47,7 +47,7 @@ export const FormCreateAccount = () => {
       <SelectWithLabel
         required
         label="Género"
-        options={GENDERINFO}
+        options={SELECT_GENDER}
         name="gender"
         placeholder="Selecciona tu género"
       />

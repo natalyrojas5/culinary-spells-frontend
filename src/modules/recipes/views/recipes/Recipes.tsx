@@ -1,5 +1,5 @@
 import { Banner } from "@/modules/auth/components";
-import { Recipes } from "@/modules/core/components";
+import { Recipes } from "@/modules/recipes/components";
 import {
   AddRecipe,
   FeaturedRecipe,

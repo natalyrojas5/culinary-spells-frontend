@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export const ModalPasswordCreated = () => {
   const {
-    orange: { size, type },
+    goldenYellow: { size, type },
   } = BUTTON;
   return (
     <Modal name={MODAL.passwordCreated} title="Contraseña creada">

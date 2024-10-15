@@ -22,7 +22,7 @@ export const RecipeCreatorSmall = ({ name, country, image }: Props) => {
         className="rounded-lg w-[80px] h-[80px] object-cover"
       />
       <div>
-        <p className="font-bold">Creador:</p>
+        <p className="font-bold">Autor:</p>
         <p className="text-sm">Nombre: {name}</p>
         <p className="text-sm">País: {country}</p>
       </div>

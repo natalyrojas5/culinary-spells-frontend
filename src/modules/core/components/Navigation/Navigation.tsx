@@ -11,7 +11,7 @@ import { UserLogged } from "../UserLogged";
 
 export const Navigation = () => {
   const {
-    orange: { size, type },
+    goldenYellow: { size, type },
   } = BUTTON;
 
   const isLogged = false;
@@ -20,13 +20,13 @@ export const Navigation = () => {
 
   return (
     <header
-      className={`${fontJollyLodger.className} bg-purple-700 p-6 border-b-8 c-border-orange sticky top-0 w-full z-10`}
+      className={`${fontJollyLodger.className} bg-purple-700 p-6 border-b-8 c-border-golden-yellow sticky top-0 w-full z-10`}
     >
       <nav className="flex justify-between items-center content">
         <Link href="/" className="flex items-center gap-4">
           <Image src={ghost} width={70} height={60} alt="Ghost" />
           <div>
-            <h1 className="text-4xl c-txt-orange">Hechizos</h1>
+            <h1 className="text-4xl c-txt-golden-yellow">Hechizos</h1>
             <h2 className="text-3xl text-white">Culinarios </h2>
           </div>
         </Link>

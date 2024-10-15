@@ -1,23 +1,31 @@
+"use client";
+
 import clsx from "clsx";
 import Image from "next/image";
+import { FaRegHeart } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 import empty from "@/modules/core/assets/empty.jpg";
 import { fontJollyLodger, fontMali } from "@/modules/core/utils";
 import { BUTTON } from "@/modules/core/constants";
-import { FaRegHeart } from "react-icons/fa";
+import { PATH } from "@/modules/recipes/constants";
 
 interface Props {
   isHighlighted?: boolean;
 }
 
 export const Recipe = ({ isHighlighted = false }: Props) => {
-  const { orange } = BUTTON;
+  const {
+    goldenYellow: { size, type },
+  } = BUTTON;
+  const router = useRouter();
+
   return (
     <aside
       className={clsx(
         "rounded-lg overflow-auto p-6 border-4 bg-purple-700 text-center",
         {
           "border-white": !isHighlighted,
-          "c-border-orange": isHighlighted,
+          "c-border-golden-yellow": isHighlighted,
         }
       )}
     >
@@ -32,7 +40,7 @@ export const Recipe = ({ isHighlighted = false }: Props) => {
         <button
           className={clsx("absolute bottom-4 right-3 p-2 rounded-md", {
             "bg-white hover:bg-gray-200": !isHighlighted,
-            "bg-orange hover:bg-yellow-600": isHighlighted,
+            "bg-golden-yellow hover:bg-yellow-600": isHighlighted,
           })}
         >
           <FaRegHeart size={30} />
@@ -41,7 +49,7 @@ export const Recipe = ({ isHighlighted = false }: Props) => {
       <div
         className={`mt-4 flex flex-col gap-1 text-white ${fontMali.className}`}
       >
-        <p className="text-center font-semibold text-2xl mb-2 c-txt-orange">
+        <p className="text-center font-semibold text-2xl mb-2 c-txt-golden-yellow">
           Votos: 2000
         </p>
         <p className="text-lg">[Nombre de Receta]</p>
@@ -49,7 +57,8 @@ export const Recipe = ({ isHighlighted = false }: Props) => {
       </div>
       <button
         className={`
-          ${orange.size.medium} ${orange.type.base} ${fontJollyLodger.className} mt-6`}
+          ${size.medium} ${type.base} ${fontJollyLodger.className} mt-6`}
+        onClick={() => router.push(`${PATH.recipe}/1`)}
       >
         Ver detalle
       </button>

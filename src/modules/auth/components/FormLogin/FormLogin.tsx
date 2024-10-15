@@ -8,7 +8,7 @@ import { fontJollyLodger, fontMonomaniacOne } from "@/modules/core/utils";
 
 export const FormLogin = () => {
   const {
-    orange: { size, type },
+    goldenYellow: { size, type },
   } = BUTTON;
   const router = useRouter();
   return (
@@ -27,8 +27,8 @@ export const FormLogin = () => {
 
       <button
         type="button"
-        className={`${fontMonomaniacOne.className} c-txt-orange text-3xl underline`}
-        onClick={() => router.push(PATH.forgot_password)}
+        className={`${fontMonomaniacOne.className} c-txt-golden-yellow text-3xl underline`}
+        onClick={() => router.push(PATH.forgotPassword)}
       >
         Olvidé mi contraseña
       </button>
