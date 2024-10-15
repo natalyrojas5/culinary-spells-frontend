@@ -27,7 +27,7 @@ export const Modal = ({ title, subtitle, children, name }: Props) => {
           <div className="bg-purple-linear px-8 py-4 flex flex-col gap-8">
             <div className="ml-auto">
               <IoCloseSharp
-                className="cursor-pointer c-txt-orange"
+                className="cursor-pointer c-txt-golden-yellow"
                 size={50}
                 onClick={() => toggle({ isOpen: false, name: "" })}
               />

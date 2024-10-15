@@ -10,7 +10,7 @@ import { BUTTON } from "@/modules/core/constants";
 
 export const Banner = () => {
   const {
-    orange: { size, type },
+    goldenYellow: { size, type },
   } = BUTTON;
 
   return (
