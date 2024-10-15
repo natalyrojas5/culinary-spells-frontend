@@ -5,7 +5,11 @@ import { SelectWithLabel } from "@/modules/core/components/SelectWithLabel";
 import { BUTTON, SELECT_GENDER } from "@/modules/core/constants";
 import { fontJollyLodger } from "@/modules/core/utils";
 
-export const FormCreateAccount = () => {
+interface IProps {
+  countries: Array<{ value: number; text: string }>;
+}
+
+export const FormCreateAccount = ({ countries }: IProps) => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
@@ -19,7 +23,7 @@ export const FormCreateAccount = () => {
         required
       />
       <InputWithLabel
-        label="Apellidos(opcional)"
+        label="Apellidos (opcional)"
         name="lastname"
         type="email"
         placeholder="Ingresa tus apellidos"
@@ -53,7 +57,7 @@ export const FormCreateAccount = () => {
       />
       <SelectWithLabel
         required
-        options={[]}
+        options={countries}
         label="País"
         name="idCountry"
         placeholder="Selecciona tu país"
