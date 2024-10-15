@@ -1,6 +1,7 @@
 'use client'
 import { fontMonomaniacOne } from "@/modules/core/utils";
 import { CldUploadWidget } from "next-cloudinary";
+import { BUTTONCLOUDINARY } from "../../constants";
 
 interface IProps {
   label: string;
@@ -22,27 +23,7 @@ export const InputFile = ({
       </label>
       <CldUploadWidget
         uploadPreset="test-ia"
-        options={{
-          sources: ["local"],
-          multiple: false,
-          maxFiles: 1,
-          language: "es",
-          text: {
-            es: {
-              or: "O",
-              actions:{
-                upload:placeholder
-              },
-              menu: {
-                files: "Subir desde tu dispositivo",
-              },
-              local: {
-                browse: "Seleccionar",
-                dd_title_single: "Arrastra tu imagen aquí",
-              }
-            },
-          },
-        }}
+        options={BUTTONCLOUDINARY.options}
       >
         {({ open }) => {
           return (
