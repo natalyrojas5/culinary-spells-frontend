@@ -5,10 +5,10 @@ import { AddEditSteps } from "../AddEditSteps";
 import { TextArea } from "@/modules/core/components/TextArea";
 
 interface IProps{
-    view:string
+    isAdd:boolean
 }
 
-export const FormCreateEditRecipe = ({view = 'CREATED' } : IProps) => {
+export const FormCreateEditRecipe = ({isAdd = true } : IProps) => {
     const {
         goldenYellow: { size, type },
       } = BUTTON;
@@ -34,17 +34,17 @@ export const FormCreateEditRecipe = ({view = 'CREATED' } : IProps) => {
             />
             <InputFile
                 name=""
-                label="[1] Imagen Secundaria(opcional)"
+                label="[1] Imagen Secundaria (opcional)"
                 placeholder="Subir Receta Secundaria"
             />
             <InputFile
                 name=""
-                label="[2] Imagen Secundaria(opcional)"
+                label="[2] Imagen Secundaria (opcional)"
                 placeholder="Subir Receta Secundaria"
             />
             <InputFile
                 name=""
-                label="[3] Imagen Secundaria(opcional)"
+                label="[3] Imagen Secundaria (opcional)"
                 placeholder="Subir Receta Secundaria"
             />
 

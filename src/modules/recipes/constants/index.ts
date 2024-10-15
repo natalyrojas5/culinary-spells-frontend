@@ -1,2 +1,2 @@
 export * from "./Paths";
-export * from "./Views"
+export * from "./RecipeFormTitle"
