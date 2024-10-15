@@ -4,3 +4,4 @@ export * from "./FormForgotPassword";
 export * from "./ModalPasswordCreated";
 export * from "./Banner";
 export * from "./FormCreateAccount"
+export * from "./ModalAccessRecipe"
