@@ -10,7 +10,8 @@ interface IProps {
   placeholder: string;
   name: string;
   options: Array<Options>;
-  required: boolean | undefined;
+  required?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export const SelectWithLabel = ({
@@ -19,6 +20,7 @@ export const SelectWithLabel = ({
   name,
   options = [],
   required,
+  onChange,
 }: IProps) => {
   return (
     <fieldset
@@ -33,6 +35,7 @@ export const SelectWithLabel = ({
         name={name}
         className="p-3 rounded-lg shadow-lg w-full text-2xl border-4 c-border-golden-yellow "
         id={name}
+        onChange={onChange}
       >
         <option disabled value="">
           {placeholder}

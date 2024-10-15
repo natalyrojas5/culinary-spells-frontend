@@ -35,7 +35,7 @@ export const InputPassword = ({
       </label>
       <div className="w-full relative">
         <input
-          className="p-3 rounded-lg shadow-lg w-full text-2xl border-4 c-border-golden-yellow pr-20"
+          className="p-3 rounded-lg shadow-lg w-full text-2xl border-4 c-border-golden-yellow pr-20 outline-none"
           id={name}
           name={name}
           placeholder={placeholder}
