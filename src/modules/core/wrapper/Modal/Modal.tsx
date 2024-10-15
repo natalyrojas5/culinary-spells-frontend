@@ -35,7 +35,7 @@ export const Modal = ({ title, subtitle, children, name }: Props) => {
             {title && (
               <div className={`${!subtitle ? "mb-2" : ""} text-center`}>
                 <h3
-                  className={`text-5xl leading-6 font-bold ${fontMonomaniacOne.className}`}
+                  className={`text-4xl leading-6 font-bold ${fontMonomaniacOne.className}`}
                 >
                   {title}
                 </h3>

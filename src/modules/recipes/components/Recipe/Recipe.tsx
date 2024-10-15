@@ -8,12 +8,18 @@ import empty from "@/modules/core/assets/empty.jpg";
 import { fontJollyLodger, fontMali } from "@/modules/core/utils";
 import { BUTTON } from "@/modules/core/constants";
 import { PATH } from "@/modules/recipes/constants";
+import { IRecipe } from "@/modules/recipes/interfaces";
 
-interface Props {
+interface Props extends IRecipe {
   isHighlighted?: boolean;
 }
 
-export const Recipe = ({ isHighlighted = false }: Props) => {
+export const Recipe = ({
+  isHighlighted = false,
+  name,
+  detail = "",
+  score = 0,
+}: Props) => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
@@ -50,10 +56,10 @@ export const Recipe = ({ isHighlighted = false }: Props) => {
         className={`mt-4 flex flex-col gap-1 text-white ${fontMali.className}`}
       >
         <p className="text-center font-semibold text-2xl mb-2 c-txt-golden-yellow">
-          Votos: 2000
+          Votos: {score === 0 ? "-" : score}
         </p>
-        <p className="text-lg">[Nombre de Receta]</p>
-        <p className="text-lg">[Descripción de Receta]</p>
+        <p className="text-lg">{name}</p>
+        <p className="text-lg">{detail ? "Sin descripción" : detail}</p>
       </div>
       <button
         className={`
