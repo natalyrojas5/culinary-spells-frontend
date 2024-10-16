@@ -8,15 +8,17 @@ import { fontJollyLodger } from "@/modules/core/utils";
 import { PATH } from "@/modules/auth/constants";
 import { BUTTON } from "@/modules/core/constants";
 import { UserLogged } from "../UserLogged";
+import { useAuthenticated } from "../../hooks";
 
 export const Navigation = () => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
 
-  const isLogged = false;
   const pathname = usePathname();
   const isPathHome = pathname === "/";
+
+  const { isAuthenticated } = useAuthenticated();
 
   return (
     <header
@@ -24,20 +26,13 @@ export const Navigation = () => {
     >
       <nav className="flex justify-between items-center content">
         <Link href="/" className="flex items-center gap-4">
-          <Image
-            src={ghost}
-            width={70}
-            height={60}
-            alt="Ghost"
-            style={{ width: "auto", height: "auto" }}
-            priority
-          />
+          <Image src={ghost} width={70} height={60} alt="Ghost" priority />
           <div>
             <h1 className="text-4xl c-txt-golden-yellow">Hechizos</h1>
             <h2 className="text-3xl text-white">Culinarios </h2>
           </div>
         </Link>
-        {isLogged ? (
+        {isAuthenticated ? (
           <UserLogged />
         ) : isPathHome ? (
           <Link href={PATH.login} className={`${size.big} ${type.base}`}>

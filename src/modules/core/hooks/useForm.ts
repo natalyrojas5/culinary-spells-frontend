@@ -2,7 +2,7 @@ import { useState, ChangeEvent } from "react";
 
 type FormValues = { [key: string]: string };
 
-const useForm = (initialValues: FormValues = {}) => {
+export const useForm = (initialValues: FormValues = {}) => {
   const [values, setValues] = useState<FormValues>(initialValues);
 
   const handleChange = (
@@ -25,5 +25,3 @@ const useForm = (initialValues: FormValues = {}) => {
     resetForm,
   };
 };
-
-export default useForm;
