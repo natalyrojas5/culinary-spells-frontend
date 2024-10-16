@@ -1,4 +1,4 @@
-import { Navigation, Footer } from "@/modules/core/components";
+import { Navigation, Footer,Toast } from "@/modules/core/components";
 
 export const LayoutMain = ({
   children,
@@ -8,8 +8,9 @@ export const LayoutMain = ({
   return (
     <>
       <Navigation />
-      <main className="content relative">{children}</main>
+      <main className="content grow py-14">{children}</main>
       <Footer />
+      <Toast />
     </>
   );
 };
