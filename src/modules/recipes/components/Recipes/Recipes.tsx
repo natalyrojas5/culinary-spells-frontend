@@ -18,7 +18,7 @@ export const Recipes = ({ recipes }: Props) => {
       {hasRecipes && (
         <section className="grid grid-cols-3 gap-6">
           {recipes.map((recipe) => (
-            <Recipe {...recipe} />
+            <Recipe {...recipe} key={crypto.randomUUID()} />
           ))}
         </section>
       )}

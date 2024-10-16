@@ -24,7 +24,14 @@ export const Navigation = () => {
     >
       <nav className="flex justify-between items-center content">
         <Link href="/" className="flex items-center gap-4">
-          <Image src={ghost} width={70} height={60} alt="Ghost" />
+          <Image
+            src={ghost}
+            width={70}
+            height={60}
+            alt="Ghost"
+            style={{ width: "auto", height: "auto" }}
+            priority
+          />
           <div>
             <h1 className="text-4xl c-txt-golden-yellow">Hechizos</h1>
             <h2 className="text-3xl text-white">Culinarios </h2>
