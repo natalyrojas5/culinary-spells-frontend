@@ -15,7 +15,7 @@ export const FormCreateAccount = ({ countries }: IProps) => {
     goldenYellow: { size, type },
   } = BUTTON;
 
-  const { handleChange, values, register } = useRegisterUser();
+  const { handleChange, register, isLoading, values } = useRegisterUser();
   return (
     <form
       className="flex flex-col gap-4 items-center w-[500px] mx-auto mt-8"
@@ -27,6 +27,7 @@ export const FormCreateAccount = ({ countries }: IProps) => {
         type="text"
         placeholder="Ingresa tus nombres"
         required
+        value={values?.name || ""}
         onChange={handleChange}
       />
       <InputWithLabel
@@ -34,12 +35,14 @@ export const FormCreateAccount = ({ countries }: IProps) => {
         name="lastname"
         onChange={handleChange}
         type="text"
+        value={values?.lastname || ""}
         placeholder="Ingresa tus apellidos"
       />
       <InputWithLabel
         label="Correo electrónico"
         name="email"
         type="email"
+        value={values?.email || ""}
         onChange={handleChange}
         placeholder="Ingresa tu correo electrónico"
         required
@@ -48,34 +51,39 @@ export const FormCreateAccount = ({ countries }: IProps) => {
         label="Contraseña"
         name="password"
         onChange={handleChange}
+        value={values?.password || ""}
         placeholder="Ingresa tu contraseña"
         required
       />
       <InputPassword
         label="Repetir Contraseña"
         name="repeat_password"
+        value={values?.repeat_password || ""}
+        onChange={handleChange}
         placeholder="Ingresa tu contraseña"
         required
-        onChange={handleChange}
       />
       <SelectWithLabel
-        required
         label="Género"
         options={SELECT_GENDER}
         name="gender"
         onChange={handleChange}
+        value={values?.gender || ""}
         placeholder="Selecciona tu género"
+        required
       />
       <SelectWithLabel
         required
         options={countries}
         label="País"
         name="idCountry"
+        value={values?.idCountry || ""}
         onChange={handleChange}
         placeholder="Selecciona tu país"
       />
       <button
         type="submit"
+        disabled={isLoading}
         className={`${size.big} ${type.base} ${fontJollyLodger.className} mt-8`}
       >
         Crear Cuenta

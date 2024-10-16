@@ -10,6 +10,7 @@ interface IProps {
   name: string;
   required?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
 }
 
 export const InputPassword = ({
@@ -18,6 +19,7 @@ export const InputPassword = ({
   name,
   required = false,
   onChange,
+  value,
 }: IProps) => {
   const [isInputText, setIsInputText] = useState(false);
 
@@ -42,11 +44,20 @@ export const InputPassword = ({
           required={required}
           type={isInputText ? "text" : "password"}
           onChange={onChange}
+          value={value}
         />
         {isInputText ? (
-          <FaEyeSlash {...propsIcon} onClick={() => setIsInputText(false)} color="gray" />
+          <FaEyeSlash
+            {...propsIcon}
+            onClick={() => setIsInputText(false)}
+            color="gray"
+          />
         ) : (
-          <FaEye {...propsIcon} onClick={() => setIsInputText(true)}  color="gray"/>
+          <FaEye
+            {...propsIcon}
+            onClick={() => setIsInputText(true)}
+            color="gray"
+          />
         )}
       </div>
     </fieldset>

@@ -2,9 +2,13 @@ import useForm from "@/modules/core/hooks/useForm";
 import { SchemaRegisterUser } from "../schemas";
 import { formatErrors } from "@/modules/core/utils";
 import { toast } from "react-toastify";
+import { useState } from "react";
+import { registerUserService } from "../actions";
+import { IRegisterUser } from "../interfaces";
 
 export const useRegisterUser = () => {
-  const { values, handleChange } = useForm({
+  const [isLoading, setIsLoading] = useState(false);
+  const { values, handleChange, resetForm } = useForm({
     password: "",
     name: "",
     lastname: "",
@@ -33,12 +37,45 @@ export const useRegisterUser = () => {
     return true;
   };
 
-  const register = (e: React.FormEvent<HTMLFormElement>) => {
+  const register = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const isValid = isFormValid();
     if (!isValid) return;
+
+    setIsLoading(true);
+
+    try {
+      const { password, name, email, idCountry, gender, lastname } = values;
+
+      const payload: IRegisterUser = {
+        password,
+        name,
+        email,
+        idCountry: parseInt(idCountry),
+        gender: parseInt(gender),
+      };
+      if (lastname) payload.lastname = lastname;
+
+      const { isOk, message } = await registerUserService(payload);
+      if (isOk) {
+        toast.success(message, {
+          position: "top-right",
+        });
+        resetForm();
+      } else {
+        toast.error(message, {
+          position: "top-right",
+        });
+      }
+    } catch (error) {
+      toast.error("Ocurrió un error al registrar el usuario", {
+        position: "top-right",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  return { register, handleChange, values };
+  return { register, handleChange, values, isLoading };
 };
