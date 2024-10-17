@@ -2,7 +2,7 @@ import { fontMonomaniacOne } from "@/modules/core/utils";
 import { MouseEventHandler } from "react";
 
 interface Options {
-  value: number;
+  value: number | string;
   text: string;
 }
 
@@ -11,11 +11,11 @@ interface IProps {
   placeholder: string;
   name: string;
   options: Array<Options>;
-  required: boolean | undefined;
+  required?: boolean;
   withLink?: boolean;
   linkText?: string ;
   click ?: MouseEventHandler<HTMLParagraphElement>;
-  isAdd: boolean
+  isTextWhite?: boolean
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   value?: string;
 }
@@ -29,7 +29,7 @@ export const SelectWithLabel = ({
   withLink = false,
   linkText,
   click,
-  isAdd = true,
+  isTextWhite = true,
   onChange,
   value,
 }: IProps) => {
@@ -37,7 +37,7 @@ export const SelectWithLabel = ({
     <fieldset
       className={`flex flex-col gap-3 items-start w-full ${fontMonomaniacOne.className} `}
     >
-      <label htmlFor={name} className={`${isAdd ? 'text-white' : 'c-txt-golden-yellow'} text-2xl flex w-full justify-between`}>
+      <label htmlFor={name} className={`${isTextWhite ? 'text-white' : 'c-txt-golden-yellow'} text-2xl flex w-full justify-between`}>
         {label}
         {withLink &&
           <p className="c-txt-golden-yellow cursor-pointer" onClick={click}>

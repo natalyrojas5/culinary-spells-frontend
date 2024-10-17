@@ -7,7 +7,6 @@ import { BUTTON } from "@/modules/core/constants";
 import { fontJollyLodger } from "@/modules/core/utils";
 import { AddEditSteps } from "../AddEditSteps";
 import { TextArea } from "@/modules/core/components/TextArea";
-import { Label } from "@/modules/core/components/Label";
 import { UploadImage } from "../UploadImage";
 import { RECIPE_FORM_FILTERS } from "../../constants";
 interface IProps {
@@ -21,7 +20,7 @@ export const FormCreateEditRecipe = ({ isAdd = true }: IProps) => {
   return (
     <form className="flex flex-col gap-4 items-center  mx-auto mt-8">
       <InputWithLabel
-        isAdd={isAdd}
+        isTextWhite={isAdd}
         label="Nombre de Receta*"
         name=""
         type="text"
@@ -38,12 +37,12 @@ export const FormCreateEditRecipe = ({ isAdd = true }: IProps) => {
       />
 
       <SelectWithLabel
-        click={() => console.log("Click")}
+        click={() => {}}
         withLink={true}
         linkText="Conocer tipos de Receta"
         label="Tipo de Receta*"
         name=""
-        isAdd={isAdd}
+        isTextWhite={isAdd}
         placeholder="Selecciona tipo de receta"
         required
         options={[]}
@@ -74,7 +73,7 @@ export const FormCreateEditRecipe = ({ isAdd = true }: IProps) => {
       />
 
       <TextArea
-        isAdd={isAdd}
+        isTextWhite={isAdd}
         label="Descripción de Receta*"
         placeholder="Ingresa tu descripción de receta"
         name=""
@@ -83,12 +82,11 @@ export const FormCreateEditRecipe = ({ isAdd = true }: IProps) => {
 
       <AddEditSteps isAdd={isAdd} steps={[]} />
 
-      {isAdd ? (
-        <MultipleInput label="Tiempo de preparación*" isAdd={isAdd}>
+      <MultipleInput label="Tiempo de preparación*" isAdd={isAdd}>
           <div className="grid grid-cols-3 gap-2 w-full">
             <div className="col-span-1">
               <InputWithLabel
-                isAdd={isAdd}
+                isTextWhite={isAdd}
                 label=""
                 name=""
                 type="text"
@@ -99,25 +97,20 @@ export const FormCreateEditRecipe = ({ isAdd = true }: IProps) => {
               <SelectWithLabel
                 label=""
                 name=""
-                isAdd={isAdd}
+                isTextWhite={isAdd}
                 required
-                options={[]}
+                options={[
+                  { text: "Minutos", value: "min" },
+                  { text: "Horas", value: "hour" },
+                ]}
                 placeholder="Selecciona unidad "
               />
             </div>
           </div>
         </MultipleInput>
-      ) : (
-        <Label
-          name="time_prepare"
-          value="[1] [Hora]"
-          label="Tiempo de Preparación*"
-        />
-      )}
 
       <button
-        className={`
-                    ${size.big} ${type.base} ${fontJollyLodger.className} mt-6 text-left`}
+        className={`${size.big} ${type.base} ${fontJollyLodger.className} mt-6 text-left`}
       >
         Agregar Receta
       </button>
