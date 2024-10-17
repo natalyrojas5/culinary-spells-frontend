@@ -17,7 +17,7 @@ export const ViewCreateEdit = ({ isAdd } : IProps) => {
             >
                 <h1 className="font-extrabold text-5xl c-txt-golden-yellow">{isAdd ? RECIPE_FORM_TITLES.CREATE : RECIPE_FORM_TITLES.EDIT}</h1>
             </header>
-            <FormCreateEditRecipe isAdd />
+            <FormCreateEditRecipe isAdd={isAdd} />
         </>
     )
 }

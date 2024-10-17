@@ -5,6 +5,7 @@ interface IProps {
   placeholder: string;
   name: string;
   required?: boolean;
+  isTextWhite: boolean
 }
 
 export const TextArea = ({
@@ -12,12 +13,13 @@ export const TextArea = ({
   placeholder,
   name,
   required,
+  isTextWhite = true
 }: IProps) => {
   return (
     <fieldset
       className={`flex flex-col gap-3 items-start w-full ${fontMonomaniacOne.className} `}
     >
-      <label htmlFor={name} className="text-white text-2xl">
+      <label htmlFor={name} className={`${isTextWhite ? 'text-white' : 'c-txt-golden-yellow'} text-2xl`}>
         {label}
       </label>
       <textarea

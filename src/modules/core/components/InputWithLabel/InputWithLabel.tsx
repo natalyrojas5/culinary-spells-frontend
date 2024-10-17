@@ -6,6 +6,7 @@ interface IProps {
   name: string;
   type: "text" | "email";
   required?: boolean;
+  isTextWhite?: boolean
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
 }
@@ -14,6 +15,7 @@ export const InputWithLabel = ({
   label,
   placeholder,
   name,
+  isTextWhite = true,
   type = "text",
   required,
   onChange,
@@ -23,7 +25,7 @@ export const InputWithLabel = ({
     <fieldset
       className={`flex flex-col gap-3 items-start w-full ${fontMonomaniacOne.className}`}
     >
-      <label htmlFor={name} className="text-white text-2xl">
+      <label htmlFor={name} className={`${isTextWhite ? 'text-white' : 'c-txt-golden-yellow'} text-2xl`}>
         {label}
       </label>
       <input
