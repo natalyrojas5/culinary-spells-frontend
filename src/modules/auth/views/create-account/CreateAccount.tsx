@@ -16,7 +16,7 @@ export const ViewCreateAccount = async() => {
       >
         <h1 className="text-5xl text-white">Registro de Cuenta </h1>
         <Link
-          href={PATH.login}
+          href={`/${PATH.login}`}
           className="c-txt-golden-yellow text-3xl underline"
         >
           Iniciar Sesión

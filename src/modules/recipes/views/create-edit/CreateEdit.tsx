@@ -8,7 +8,7 @@ interface IProps{
     isAdd:boolean
 }
 
-export const ViewCreateEditRecipe = ({ isAdd } : IProps) => {
+export const ViewCreateEdit = ({ isAdd } : IProps) => {
     return (
         <>
             <GoBack description="Regresar" />

@@ -1,8 +1,8 @@
-import useForm from "@/modules/core/hooks/useForm";
-import { SchemaRegisterUser } from "../schemas";
-import { formatErrors } from "@/modules/core/utils";
-import { toast } from "react-toastify";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { useForm } from "@/modules/core/hooks";
+import { formatErrors } from "@/modules/core/utils";
+import { SchemaRegisterUser } from "../schemas";
 import { registerUserService } from "../actions";
 import { IRegisterUser } from "../interfaces";
 
@@ -15,6 +15,7 @@ export const useRegisterUser = () => {
     gender: "",
     idCountry: "",
     repeat_password: "",
+    email: "",
   });
 
   const isFormValid = () => {
