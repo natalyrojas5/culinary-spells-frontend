@@ -20,7 +20,7 @@ export const ViewHome = () => {
         <h1 className={`text-4xl ${fontMonomaniacOne.className} mb-4`}>
           Recetas que Encantan y Aterrorizan
         </h1>
-        <p className={`text-md ${fontMali.className} mb-4`}>
+        <p className={`text-md ${fontMali.className} mb-6`}>
           Descubre las recetas más espeluznantes y deliciosas para Halloween.
           <br />
           Desde postres embrujados hasta bebidas macabras, encuentra platos
@@ -28,7 +28,7 @@ export const ViewHome = () => {
         </p>
         <Link
           className={`
-          ${size.medium} ${type.base} ${fontJollyLodger.className}`}
+          ${size.big} ${type.base} ${fontJollyLodger.className} mt-4`}
           href={PATH.recipes}
         >
           Conocer recetas

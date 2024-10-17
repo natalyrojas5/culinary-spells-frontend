@@ -13,7 +13,7 @@ export const ViewLogin = () => {
       >
         <h1 className="text-5xl text-white">Inicio de Sesión</h1>
         <button
-          onClick={() => router.push(PATH.createAccount)}
+          onClick={() => router.push(`/${PATH.createAccount}`)}
           className="c-txt-golden-yellow text-3xl underline"
         >
           Crear cuenta

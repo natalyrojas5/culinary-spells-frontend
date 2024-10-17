@@ -64,7 +64,7 @@ export const Recipe = ({
       <button
         className={`
           ${size.medium} ${type.base} ${fontJollyLodger.className} mt-6`}
-        onClick={() => router.push(`${PATH.recipe}/1`)}
+        onClick={() => router.push(`/${PATH.recipeDetail}`)}
       >
         Ver detalle
       </button>
