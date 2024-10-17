@@ -9,6 +9,9 @@ import { fontJollyLodger, fontMali } from "@/modules/core/utils";
 import { BUTTON } from "@/modules/core/constants";
 import { PATH } from "@/modules/recipes/constants";
 import { IRecipe } from "@/modules/recipes/interfaces";
+import { useAuthenticated } from "@/modules/core/hooks";
+import { useModalStore } from "@/modules/core/stores";
+import { MODAL } from "@/modules/auth/constants";
 
 interface Props extends IRecipe {
   isHighlighted?: boolean;
@@ -19,11 +22,25 @@ export const Recipe = ({
   name,
   detail = "",
   score = 0,
+  images = [],
 }: Props) => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
+  const { isAuthenticated } = useAuthenticated();
   const router = useRouter();
+  const modalToggle = useModalStore((state) => state.toggle);
+
+  const firtImage = images[0]?.link;
+  const hasImage = firtImage?.startsWith("http");
+
+  const goDetail = () => {
+    if (isAuthenticated) {
+      router.push(`/${PATH.recipeDetail}`);
+    } else {
+      modalToggle({ isOpen: true, name: MODAL.accessRecipe });
+    }
+  };
 
   return (
     <aside
@@ -37,7 +54,7 @@ export const Recipe = ({
     >
       <div className="relative">
         <Image
-          src={empty}
+          src={hasImage ? firtImage : empty}
           width={800}
           height={50}
           alt=""
@@ -64,7 +81,7 @@ export const Recipe = ({
       <button
         className={`
           ${size.medium} ${type.base} ${fontJollyLodger.className} mt-6`}
-        onClick={() => router.push(`/${PATH.recipeDetail}`)}
+        onClick={goDetail}
       >
         Ver detalle
       </button>
