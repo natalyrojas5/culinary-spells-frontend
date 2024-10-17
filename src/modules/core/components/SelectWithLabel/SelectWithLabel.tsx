@@ -1,4 +1,5 @@
 import { fontMonomaniacOne } from "@/modules/core/utils";
+import { MouseEventHandler } from "react";
 
 interface Options {
   value: number;
@@ -11,6 +12,10 @@ interface IProps {
   name: string;
   options: Array<Options>;
   required: boolean | undefined;
+  withLink?: boolean;
+  linkText?: string ;
+  click ?: MouseEventHandler<HTMLParagraphElement>;
+  isAdd: boolean
 }
 
 export const SelectWithLabel = ({
@@ -19,13 +24,22 @@ export const SelectWithLabel = ({
   name,
   options = [],
   required,
+  withLink = false,
+  linkText,
+  click,
+  isAdd = true
 }: IProps) => {
   return (
     <fieldset
       className={`flex flex-col gap-3 items-start w-full ${fontMonomaniacOne.className} `}
     >
-      <label htmlFor={name} className="text-white text-2xl">
+      <label htmlFor={name} className={`${isAdd ? 'text-white' : 'c-txt-golden-yellow'} text-2xl flex w-full justify-between`}>
         {label}
+        {withLink &&
+          <p className="c-txt-golden-yellow cursor-pointer" onClick={click}>
+            {linkText}
+          </p>
+        }
       </label>
       <select
         defaultValue=""

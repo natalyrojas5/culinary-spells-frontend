@@ -6,12 +6,14 @@ interface IProps {
   name: string;
   type: "text" | "email";
   required?: boolean;
+  isAdd: boolean
 }
 
 export const InputWithLabel = ({
   label,
   placeholder,
   name,
+  isAdd = true,
   type = "text",
   required,
 }: IProps) => {
@@ -19,7 +21,7 @@ export const InputWithLabel = ({
     <fieldset
       className={`flex flex-col gap-3 items-start w-full ${fontMonomaniacOne.className} `}
     >
-      <label htmlFor={name} className="text-white text-2xl">
+      <label htmlFor={name} className={`${isAdd ? 'text-white' : 'c-txt-golden-yellow'} text-2xl`}>
         {label}
       </label>
       <input
