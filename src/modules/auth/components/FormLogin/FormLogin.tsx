@@ -38,7 +38,7 @@ export const FormLogin = () => {
       <Link
         type="button"
         className={`${fontMonomaniacOne.className} c-txt-golden-yellow text-3xl underline`}
-        href={PATH.forgotPassword}
+        href={`/${PATH.forgotPassword}`}
       >
         Olvidé mi contraseña
       </Link>

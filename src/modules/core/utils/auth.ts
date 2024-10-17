@@ -18,6 +18,9 @@ export const authConfig: NextAuthOptions = {
       return session;
     },
   },
+  session: {
+    strategy: "jwt",
+  },
 
   providers: [
     CredentialsProvider({
