@@ -8,3 +8,4 @@ export * from "./FormCreateEditRecipe"
 export * from "./AddEditSteps"
 export * from "./MyRecipe";
 export * from "./MyRecipes";
+export * from "./UploadImage"

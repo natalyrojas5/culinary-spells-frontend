@@ -1,7 +1,8 @@
 import { fontMonomaniacOne } from "@/modules/core/utils";
+import { MouseEventHandler } from "react";
 
 interface Options {
-  value: number;
+  value: number | string;
   text: string;
 }
 
@@ -11,6 +12,10 @@ interface IProps {
   name: string;
   options: Array<Options>;
   required?: boolean;
+  withLink?: boolean;
+  linkText?: string ;
+  click ?: MouseEventHandler<HTMLParagraphElement>;
+  isTextWhite?: boolean
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   value?: string;
 }
@@ -21,6 +26,10 @@ export const SelectWithLabel = ({
   name,
   options = [],
   required,
+  withLink = false,
+  linkText,
+  click,
+  isTextWhite = true,
   onChange,
   value,
 }: IProps) => {
@@ -28,8 +37,13 @@ export const SelectWithLabel = ({
     <fieldset
       className={`flex flex-col gap-3 items-start w-full ${fontMonomaniacOne.className} `}
     >
-      <label htmlFor={name} className="text-white text-2xl">
+      <label htmlFor={name} className={`${isTextWhite ? 'text-white' : 'c-txt-golden-yellow'} text-2xl flex w-full justify-between`}>
         {label}
+        {withLink &&
+          <p className="c-txt-golden-yellow cursor-pointer" onClick={click}>
+            {linkText}
+          </p>
+        }
       </label>
       <select
         defaultValue=""
