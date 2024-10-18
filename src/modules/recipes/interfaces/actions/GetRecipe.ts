@@ -10,9 +10,11 @@ export interface IDetailRecipe {
   idRecipe: number;
   name: string;
   detail: string;
-  score: number;
+  count: number;
   cookingTime: string;
   recipeTypes: number;
+  recipeTypeName: string;
+
   user: {
     idUser: number;
     email: string;
@@ -20,6 +22,8 @@ export interface IDetailRecipe {
     name: string;
     lastname: string;
     idCountry: number;
+    countryName: string;
+    gender: number;
   };
   steps: IStep[];
 }

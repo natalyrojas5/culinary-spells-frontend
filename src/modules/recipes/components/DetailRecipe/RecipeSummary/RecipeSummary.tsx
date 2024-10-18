@@ -2,7 +2,12 @@ import { fontMali, fontMonomaniacOne } from "@/modules/core/utils";
 import { FaBook } from "react-icons/fa6";
 import { FaRegClock } from "react-icons/fa";
 
-export const RecipeSummary = () => {
+interface IProps {
+  recipeTypeName: string;
+  cookingTime: string;
+}
+
+export const RecipeSummary = ({ recipeTypeName, cookingTime }: IProps) => {
   return (
     <section className="flex gap-4">
       <aside className="p-5 border-2 c-border-golden-yellow rounded-lg flex gap-4 items-center">
@@ -13,7 +18,9 @@ export const RecipeSummary = () => {
           >
             Tipo de Receta
           </p>
-          <p className={`text-white text-xl ${fontMali.className}`}>[Postre]</p>
+          <p className={`text-white text-xl ${fontMali.className}`}>
+            {recipeTypeName}
+          </p>
         </div>
       </aside>
       <aside className="p-5 border-2 c-border-golden-yellow rounded-lg flex gap-4 items-center">
@@ -25,11 +32,10 @@ export const RecipeSummary = () => {
             Tiempo de preparación
           </p>
           <p className={`text-white text-xl ${fontMali.className}`}>
-            [2 horas]
+            {cookingTime}
           </p>
         </div>
       </aside>
-
     </section>
   );
 };
