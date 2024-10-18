@@ -1,6 +1,10 @@
 import { fontMali, fontMonomaniacOne } from "@/modules/core/utils";
 
-export const RecipeDescription = () => {
+interface IProps {
+  description: string;
+}
+
+export const RecipeDescription = ({ description }: IProps) => {
   return (
     <section className="p-4">
       <h1
@@ -8,12 +12,7 @@ export const RecipeDescription = () => {
       >
         Descripción de Receta
       </h1>
-      <p className={`${fontMali.className} text-xl text-white `}>
-        Lorem ipsum dolor sit amet consectetur. Mus at ut leo egestas
-        pellentesque dis mollis. At purus consequat cras a in faucibus. Turpis
-        nisl dui eget vitae viverra amet non sit tortor. Maecenas ut ac ornare
-        faucibus vitae elementum viverra.
-      </p>
+      <p className={`${fontMali.className} text-xl text-white`}>{description}</p>
     </section>
   );
 };

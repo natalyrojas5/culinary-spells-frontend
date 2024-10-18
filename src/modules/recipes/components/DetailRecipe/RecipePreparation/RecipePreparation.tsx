@@ -1,6 +1,19 @@
 import { fontMali, fontMonomaniacOne } from "@/modules/core/utils";
+interface IStep {
+  detail: string;
+  orderNum: number;
+}
+interface IProps {
+  steps: IStep[];
+}
 
-export const RecipePreparation = () => {
+export const RecipePreparation = ({ steps }: IProps) => {
+  const sortedSteps = steps?.sort((a, b) => a.orderNum - b.orderNum);
+  const hasSteps = sortedSteps?.length > 0;
+
+  if (!hasSteps) {
+    return null;
+  }
   return (
     <section className="p-4">
       <h1
@@ -12,19 +25,15 @@ export const RecipePreparation = () => {
       <ol
         className={`${fontMali.className} text-xl text-white flex flex-col gap-3`}
       >
-        <li>
-          1. Lorem ipsum dolor sit amet consectetur. Mus at ut leo egestas
-        </li>
-        <li>
-          2. Lorem ipsum dolor sit amet consectetur. Mus at ut leo egestas
-        </li>
+        {sortedSteps.map((step) => (
+          <li key={step.orderNum} className="flex items-start gap-3">
+            <span className="text-2xl c-txt-golden-yellow">
+              {step.orderNum}.
+            </span>
+            <span className="text-white">{step.detail}</span>
+          </li>
+        ))}
       </ol>
-      {/* <p className={`${fontMali.className} text-xl text-white `}>
-        Lorem ipsum dolor sit amet consectetur. Mus at ut leo egestas
-        pellentesque dis mollis. At purus consequat cras a in faucibus. Turpis
-        nisl dui eget vitae viverra amet non sit tortor. Maecenas ut ac ornare
-        faucibus vitae elementum viverra.
-      </p> */}
     </section>
   );
 };

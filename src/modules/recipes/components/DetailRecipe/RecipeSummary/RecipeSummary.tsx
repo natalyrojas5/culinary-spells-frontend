@@ -29,10 +29,7 @@ export const RecipeSummary = () => {
           </p>
         </div>
       </aside>
-      {/* <aside>
-        <p>Tipo de Preparación</p>
-        <p>[2 horas]</p>
-      </aside> */}
+
     </section>
   );
 };

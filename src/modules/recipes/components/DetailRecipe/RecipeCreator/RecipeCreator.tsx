@@ -2,7 +2,12 @@ import { fontMali } from "@/modules/core/utils";
 import Image from "next/image";
 import empty from "@/modules/core/assets/empty.jpg";
 
-export const RecipeCreator = () => {
+interface IProps {
+  names?: string;
+  email?: string;
+}
+
+export const RecipeCreator = ({ names, email }: IProps) => {
   return (
     <aside
       className={`p-8 bg-purple-700   shadow-lg rounded-lg ${fontMali.className}`}
@@ -19,10 +24,8 @@ export const RecipeCreator = () => {
           className="rounded-full w-[120px] h-[120px] object-cover"
         />
         <div>
-          <p className="text-2xl font-semibold mb-4">
-            [Nombre + Apellido de autor]
-          </p>
-          <p className="text-lg mb-1">[Correo del autor]</p>
+          <p className="text-2xl font-semibold mb-4">{names}</p>
+          <p className="text-lg mb-1">{email}</p>
           <p className="text-lg">[País de autor]</p>
         </div>
       </div>

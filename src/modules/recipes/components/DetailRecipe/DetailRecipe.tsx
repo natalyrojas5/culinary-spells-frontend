@@ -7,11 +7,11 @@ import { RecipeSummary } from "./RecipeSummary";
 export const DetailRecipe = () => {
   return (
     <main className="flex flex-col gap-12 mt-8">
-      <RecipeBanner />
+      <RecipeBanner name="[Nombre de Receta]" score={0} />
       <RecipeSummary />
-      <RecipeDescription />
-      <RecipePreparation />
-      <RecipeCreator/>
+      <RecipeDescription description="-" />
+      <RecipePreparation steps={[]} />
+      <RecipeCreator names="[Nombre de Usuario]" email="[Correo Electrónico]" />
     </main>
   );
 };

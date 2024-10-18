@@ -3,7 +3,12 @@ import empty from "@/modules/core/assets/empty.jpg";
 import { BUTTON } from "@/modules/core/constants";
 import { fontJollyLodger, fontMali } from "@/modules/core/utils";
 
-export const RecipeBanner = () => {
+interface IProps {
+  name: string;
+  score: number;
+}
+
+export const RecipeBanner = ({ name, score }: IProps) => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
@@ -20,10 +25,10 @@ export const RecipeBanner = () => {
         className={`flex flex-col items-center gap-3 w-full ${fontMali.className}`}
       >
         <h1 className="font-extrabold text-4xl c-txt-golden-yellow">
-          [Nombre de receta]
+          {name}
         </h1>
         <p className="font-semibold text-2xl leading-4 text-white">
-          Cantidad de votos: 200
+          Cantidad de votos: {score}
         </p>
         <button
           className={`
