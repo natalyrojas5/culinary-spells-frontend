@@ -1,8 +1,22 @@
 import { fontMali } from "@/modules/core/utils";
 import Image from "next/image";
-import empty from "@/modules/core/assets/empty.jpg";
+import boy from "@/modules/core/assets/boy.jpg";
+import girl from "@/modules/core/assets/girl.jpg";
 
-export const RecipeCreator = () => {
+interface IProps {
+  names?: string;
+  email?: string;
+  countryName: string;
+  gender: number;
+}
+
+export const RecipeCreator = ({
+  names,
+  email,
+  countryName,
+  gender = 0,
+}: IProps) => {
+  const IS_BOY = gender === 0;
   return (
     <aside
       className={`p-8 bg-purple-700   shadow-lg rounded-lg ${fontMali.className}`}
@@ -12,18 +26,16 @@ export const RecipeCreator = () => {
       </h2>
       <div className="flex gap-6 text-white">
         <Image
-          src={empty}
+          src={IS_BOY ? boy : girl}
           width={400}
           height={160}
           alt="Recipe Creator"
           className="rounded-full w-[120px] h-[120px] object-cover"
         />
         <div>
-          <p className="text-2xl font-semibold mb-4">
-            [Nombre + Apellido de autor]
-          </p>
-          <p className="text-lg mb-1">[Correo del autor]</p>
-          <p className="text-lg">[País de autor]</p>
+          <p className="text-2xl font-semibold mb-4">{names}</p>
+          <p className="text-lg mb-1">{email}</p>
+          <p className="text-lg">{countryName}</p>
         </div>
       </div>
     </aside>
