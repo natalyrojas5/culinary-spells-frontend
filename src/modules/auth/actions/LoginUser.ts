@@ -8,6 +8,7 @@ export const loginUserService = async (formData: FormData) => {
       ...credentials,
       redirect: false,
     });
+    console.log(response)
     return response;
   } catch (error) {
     console.error(error);
