@@ -15,3 +15,8 @@ export interface IRecipe {
 export interface IGetRecipesSuccessResponse extends IResponseAPI {
   data: IRecipe[];
 }
+
+export interface IGetRecipesResponse {
+  isOk: boolean;
+  data: IRecipe[];
+}
