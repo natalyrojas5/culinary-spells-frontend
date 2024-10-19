@@ -14,20 +14,21 @@ export const DetailRecipe = async ({ id }: { id: string }) => {
 
     if (isOk && recipe) {
       const {
-        name = "Recipe Name Unavailable",
+        name = "Nombre de receta no disponible",
         count = 0,
-        recipeTypeName = "Type not specified",
-        cookingTime = "Time not available",
-        detail = "Description not available",
+        recipeTypeName = "Tipo no especificado",
+        cookingTime = "Tiempo no disponible",
+        detail = "Descripción no disponible",
         steps = [],
         user: {
-          name: userName = "Unknown",
-          lastname: userLastname = "User",
-          email = "Email not available",
-          countryName = "Country not specified",
+          name: userName = "Desconocido",
+          lastname: userLastname = "Usuario",
+          email = "Correo no disponible",
+          countryName = "País no especificado",
           gender = 0,
         } = {},
       } = recipe;
+
       return (
         <main className="flex flex-col gap-12 mt-8">
           <RecipeBanner name={name} score={count} />
