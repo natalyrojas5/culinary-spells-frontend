@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import ghost from "@/modules/core/assets/ghost.svg";
 import { fontJollyLodger } from "@/modules/core/utils";
 import { PATH } from "@/modules/auth/constants";
@@ -15,9 +14,6 @@ export const Navigation = () => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
-
-  const pathname = usePathname();
-  const isPathHome = pathname === "/";
 
   const { isAuthenticated } = useAuthenticated();
 
@@ -38,13 +34,9 @@ export const Navigation = () => {
         </Link>
         {isAuthenticated ? (
           <UserLogged />
-        ) : isPathHome ? (
+        ) : (
           <Link href={PATH.login} className={`${size.big} ${type.base}`}>
             Iniciar Sesión
-          </Link>
-        ) : (
-          <Link href="/" className={`${size.big} ${type.base}`}>
-            Home
           </Link>
         )}
       </nav>

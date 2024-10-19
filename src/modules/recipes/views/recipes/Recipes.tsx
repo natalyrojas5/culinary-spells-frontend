@@ -25,8 +25,7 @@ export const ViewRecipes = async () => {
         </>
       )}
       <Recipes recipes={isLogged ? data : data.slice(0, 3)} />
-      <AddRecipe />
-      <ModalAccessRecipe />
+      {isLogged ? <AddRecipe /> : <ModalAccessRecipe />}
     </>
   );
 };

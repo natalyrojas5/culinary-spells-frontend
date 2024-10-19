@@ -14,7 +14,6 @@ export const Recipes = ({ recipes }: Props) => {
       <h2 className={`text-3xl text-white ${fontMonomaniacOne.className} mb-6`}>
         Todas las Recetas
       </h2>
-
       {hasRecipes && (
         <section className="grid grid-cols-3 gap-6">
           {recipes.map((recipe) => (

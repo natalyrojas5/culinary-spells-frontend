@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import pumpkin from "@/modules/auth/assets/pumpkin.svg";
 
@@ -7,11 +9,23 @@ import {
   fontMonomaniacOne,
 } from "@/modules/core/utils";
 import { BUTTON } from "@/modules/core/constants";
+import { useModalStore } from "@/modules/core/stores";
+import { useAuthenticated } from "@/modules/core/hooks";
+import { MODAL } from "@/modules/auth/constants";
 
 export const Banner = () => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
+  const { isAuthenticated } = useAuthenticated();
+  const modalToggle = useModalStore((state) => state.toggle);
+
+  const goFeaturedRecipes = () => {
+    if (isAuthenticated) {
+    } else {
+      modalToggle({ isOpen: true, name: MODAL.accessRecipe });
+    }
+  };
 
   return (
     <section className="flex gap-8 items-center text-white">
@@ -29,6 +43,7 @@ export const Banner = () => {
         <button
           className={`
           ${size.big} ${type.base} ${fontJollyLodger.className}`}
+          onClick={goFeaturedRecipes}
         >
           Conocer recetas destacadas
         </button>

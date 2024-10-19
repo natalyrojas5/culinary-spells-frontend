@@ -8,7 +8,8 @@ export interface IRecipe {
   name: string;
   detail: string;
   images: IRecipeImage[];
-  score: number;
+  count: number;
+  idRecipe: number;
 }
 
 export interface IGetRecipesSuccessResponse extends IResponseAPI {
