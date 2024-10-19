@@ -1,8 +1,6 @@
-"use client";
-
 import { GoBack } from "@/modules/core/components";
 import { fontMonomaniacOne } from "@/modules/core/utils";
-import { FormCreateEditRecipe } from "@/modules/recipes/components";
+import { FormCreateEditRecipe, ModalRecipeTypes } from "@/modules/recipes/components";
 import { RECIPE_FORM_TITLES } from "../../constants";
 
 interface IProps {
@@ -21,6 +19,7 @@ export const ViewCreateEdit = ({ isAdd }: IProps) => {
         </h1>
       </header>
       <FormCreateEditRecipe isAdd />
+      <ModalRecipeTypes />
     </>
   );
 };

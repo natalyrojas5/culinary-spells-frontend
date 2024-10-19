@@ -13,9 +13,9 @@ interface IProps {
   options: Array<Options>;
   required?: boolean;
   withLink?: boolean;
-  linkText?: string ;
-  click ?: MouseEventHandler<HTMLParagraphElement>;
-  isTextWhite?: boolean
+  linkText?: string;
+  linkClick?: MouseEventHandler<HTMLParagraphElement>;
+  isTextWhite?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   value?: string;
 }
@@ -28,7 +28,7 @@ export const SelectWithLabel = ({
   required,
   withLink = false,
   linkText,
-  click,
+  linkClick,
   isTextWhite = true,
   onChange,
   value,
@@ -37,13 +37,18 @@ export const SelectWithLabel = ({
     <fieldset
       className={`flex flex-col gap-3 items-start w-full ${fontMonomaniacOne.className} `}
     >
-      <label htmlFor={name} className={`${isTextWhite ? 'text-white' : 'c-txt-golden-yellow'} text-2xl flex w-full justify-between`}>
+      <label
+        htmlFor={name}
+        className={`${
+          isTextWhite ? "text-white" : "c-txt-golden-yellow"
+        } text-2xl flex w-full justify-between`}
+      >
         {label}
-        {withLink &&
-          <p className="c-txt-golden-yellow cursor-pointer" onClick={click}>
+        {withLink && (
+          <p className="c-txt-golden-yellow cursor-pointer" onClick={linkClick}>
             {linkText}
           </p>
-        }
+        )}
       </label>
       <select
         defaultValue=""

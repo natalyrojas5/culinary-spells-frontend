@@ -44,7 +44,7 @@ export const Modal = ({ title, subtitle, children, name }: Props) => {
                 )}
               </div>
             )}
-            <div className="mx-4 mb-8">{children}</div>
+            <div className="mx-4 mb-8 h-[300px] overflow-auto">{children}</div>
           </div>
         </div>
       </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   InputWithLabel,
   MultipleInput,
@@ -8,7 +10,8 @@ import { fontJollyLodger } from "@/modules/core/utils";
 import { AddEditSteps } from "../AddEditSteps";
 import { TextArea } from "@/modules/core/components/TextArea";
 import { UploadImage } from "../UploadImage";
-import { RECIPE_FORM_FILTERS } from "../../constants";
+import { MODAL, RECIPE_FORM_FILTERS } from "../../constants";
+import { useModalStore } from "@/modules/core/stores";
 interface IProps {
   isAdd: boolean;
 }
@@ -17,6 +20,12 @@ export const FormCreateEditRecipe = ({ isAdd = true }: IProps) => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
+  const { toggle } = useModalStore();
+
+  const openModalTypes = () => {
+    toggle({ name: MODAL.recipeTypes, isOpen: true });
+  };
+
   return (
     <form className="flex flex-col gap-4 items-center  mx-auto mt-8">
       <InputWithLabel
@@ -37,7 +46,7 @@ export const FormCreateEditRecipe = ({ isAdd = true }: IProps) => {
       />
 
       <SelectWithLabel
-        click={() => {}}
+        linkClick={openModalTypes}
         withLink={true}
         linkText="Conocer tipos de Receta"
         label="Tipo de Receta*"
@@ -83,31 +92,31 @@ export const FormCreateEditRecipe = ({ isAdd = true }: IProps) => {
       <AddEditSteps isAdd={isAdd} steps={[]} />
 
       <MultipleInput label="Tiempo de preparación*" isAdd={isAdd}>
-          <div className="grid grid-cols-3 gap-2 w-full">
-            <div className="col-span-1">
-              <InputWithLabel
-                isTextWhite={isAdd}
-                label=""
-                name=""
-                type="text"
-                placeholder="Ingresa Tiempo"
-              />
-            </div>
-            <div className="col-span-2">
-              <SelectWithLabel
-                label=""
-                name=""
-                isTextWhite={isAdd}
-                required
-                options={[
-                  { text: "Minutos", value: "min" },
-                  { text: "Horas", value: "hour" },
-                ]}
-                placeholder="Selecciona unidad "
-              />
-            </div>
+        <div className="grid grid-cols-3 gap-2 w-full">
+          <div className="col-span-1">
+            <InputWithLabel
+              isTextWhite={isAdd}
+              label=""
+              name=""
+              type="text"
+              placeholder="Ingresa Tiempo"
+            />
           </div>
-        </MultipleInput>
+          <div className="col-span-2">
+            <SelectWithLabel
+              label=""
+              name=""
+              isTextWhite={isAdd}
+              required
+              options={[
+                { text: "Minutos", value: "min" },
+                { text: "Horas", value: "hour" },
+              ]}
+              placeholder="Selecciona unidad "
+            />
+          </div>
+        </div>
+      </MultipleInput>
 
       <button
         className={`${size.big} ${type.base} ${fontJollyLodger.className} mt-6 text-left`}
