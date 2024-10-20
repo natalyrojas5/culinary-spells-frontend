@@ -3,6 +3,7 @@ import { Recipe } from "../Recipe";
 import { IGetRecipesResponse } from "@/modules/recipes/interfaces";
 import { getServerSession } from "next-auth";
 import { getRecipes } from "../../actions";
+import { NotFound } from "@/modules/core/components";
 
 export const Recipes = async () => {
   try {
@@ -32,6 +33,8 @@ export const Recipes = async () => {
           </section>
         </section>
       );
+    } else {
+      return <NotFound />;
     }
   } catch (error) {
     console.error(error);

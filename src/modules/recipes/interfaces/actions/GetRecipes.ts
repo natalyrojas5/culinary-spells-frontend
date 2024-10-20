@@ -10,6 +10,7 @@ export interface IRecipe {
   images: IRecipeImage[];
   count: number;
   idRecipe: number;
+  isLike?: boolean;
 }
 
 export interface IGetRecipesSuccessResponse extends IResponseAPI {

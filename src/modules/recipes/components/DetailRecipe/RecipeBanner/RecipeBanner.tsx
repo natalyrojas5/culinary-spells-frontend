@@ -6,6 +6,7 @@ import { fontJollyLodger, fontMali } from "@/modules/core/utils";
 interface IProps {
   name: string;
   score: number;
+  image: string;
 }
 
 export const RecipeBanner = ({ name, score }: IProps) => {

@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import Image from "next/image";
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import empty from "@/modules/core/assets/empty.jpg";
 import { fontJollyLodger, fontMali } from "@/modules/core/utils";
@@ -24,6 +24,7 @@ export const Recipe = ({
   count = 0,
   idRecipe,
   images = [],
+  isLike,
 }: Props) => {
   const {
     goldenYellow: { size, type },
@@ -69,18 +70,20 @@ export const Recipe = ({
           src={hasImage ? firtImage : empty}
           width={800}
           height={50}
-          alt=""
+          alt={name}
           className="rounded-lg w-[500px] h-[200px] object-cover"
         />
-        <button
-          className={clsx("absolute bottom-4 right-3 p-2 rounded-md", {
-            "bg-white hover:bg-gray-200": !isHighlighted,
-            "bg-golden-yellow hover:bg-yellow-600": isHighlighted,
-          })}
-          onClick={selectedFeature}
-        >
-          <FaRegHeart size={30} />
-        </button>
+        {isLike && (
+          <div
+            className={clsx(
+              `absolute bottom-4 right-3 p-2 rounded-md flex gap-2 items-center text-xl bg-white ${fontJollyLodger.className}`
+            )}
+            onClick={selectedFeature}
+          >
+            En favoritos
+            <FaHeart size={20} />
+          </div>
+        )}
       </div>
       <div
         className={`mt-4 flex flex-col gap-1 text-white ${fontMali.className}`}

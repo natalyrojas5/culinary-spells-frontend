@@ -4,7 +4,8 @@ export * from "./InputWithLabel";
 export * from "./InputPassword";
 export * from "./GoBack";
 export * from "./SelectWithLabel";
-export * from "./InputFile"
-export * from "./MultipleInput"
-export * from './InputSearch'
-export * from './Toast'
+export * from "./InputFile";
+export * from "./MultipleInput";
+export * from "./InputSearch";
+export * from "./Toast";
+export * from "./NotFound";
