@@ -4,7 +4,7 @@ interface IProps {
   label: string;
   placeholder: string;
   name: string;
-  type: "text" | "email";
+  type: "text" | "email" | "number";
   required?: boolean;
   isTextWhite?: boolean
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;

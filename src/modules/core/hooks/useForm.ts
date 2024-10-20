@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, ChangeEvent } from "react";
 
-type FormValues = { [key: string]: string };
+type FormValues = { [key: string]: any };
 
 export const useForm = (initialValues: FormValues = {}) => {
   const [values, setValues] = useState<FormValues>(initialValues);

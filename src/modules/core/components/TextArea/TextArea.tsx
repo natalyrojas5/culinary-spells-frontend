@@ -6,6 +6,8 @@ interface IProps {
   name: string;
   required?: boolean;
   isTextWhite: boolean
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  value?: string;
 }
 
 export const TextArea = ({
@@ -13,7 +15,9 @@ export const TextArea = ({
   placeholder,
   name,
   required,
-  isTextWhite = true
+  isTextWhite = true,
+  onChange,
+  value
 }: IProps) => {
   return (
     <fieldset
@@ -31,6 +35,8 @@ export const TextArea = ({
         name={name}
         placeholder={placeholder}
         required={required}
+        onChange={onChange}
+        value={value}
       />
     </fieldset>
   );

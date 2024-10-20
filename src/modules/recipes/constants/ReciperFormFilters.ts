@@ -1,21 +1,30 @@
+import calabaza from "@/modules/recipes/assets/calabaza.png";
+import calabazaFuego from "@/modules/recipes/assets/calabaza_fuego.png";
+import calabazaGhost from "@/modules/recipes/assets/calabaza_ghost.png";
+
+
+
 export const RECIPE_FORM_FILTERS = [
     {
-        label: 'Filtro 1',
+        label: 'Calabazas',
         get propmt (){
-            return "Add background with "  + this.label
-        }
+            return "Pumkins"
+        },
+        ref:calabaza
     },
     {
-        label: 'Filtro 2',
+        label: 'Fantasmas',
         get propmt (){
-            return "Add background with "  + this.label
-        }
+            return "Ghosts"
+        },
+        ref:calabazaGhost
     },
     {
-        label: 'Filtro 3',
+        label: 'Fuego',
         get propmt (){
-            return "Add background with "  + this.label
-        }
+            return "Fired"
+        },
+        ref:calabazaFuego
     }
 ]
   

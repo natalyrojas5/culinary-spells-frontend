@@ -1,13 +1,26 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { InputWithLabel, MultipleInput } from "@/modules/core/components";
 import { BUTTON } from "@/modules/core/constants";
 import { fontJollyLodger } from "@/modules/core/utils";
 
-interface IProps {
-  isAdd: boolean;
-  steps: Array<object>;
+interface Step{
+  name: string;
+  detail: string;
+  orderNum: string
 }
 
-export const AddEditSteps = ({ isAdd = true, steps = [] }: IProps) => {
+interface IProps {
+  isAdd: boolean;
+  addStep?: () => void
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeStep: (orderNum:string , e: React.ChangeEvent<HTMLInputElement>) => void;
+  steps: Array<Step>;
+  orderStep: string;
+  deleteStep: (orderNum: string) => void
+  detailStep: string;
+}
+
+export const AddEditSteps = ({ isAdd = true, steps, orderStep, detailStep, onChange, addStep , onChangeStep , deleteStep }: IProps) => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
@@ -22,25 +35,58 @@ export const AddEditSteps = ({ isAdd = true, steps = [] }: IProps) => {
             <h3 className="text-white text-4xl">[Descripción]</h3>
           </div>
           {(steps.length > 0 || !isAdd) && (
-            <div className="col-span-3 flex justify-end items-center gap-4 mb-4">
-              <button
-                className={`${size.medium} ${type.base} ${fontJollyLodger.className}`}
-              >
-                Editar
-              </button>
-              <button
-                className={`${size.medium} ${type.base} ${fontJollyLodger.className}`}
-              >
-                Eliminar 
-              </button>
-            </div>
+            steps.map((step) => {
+              return (
+                <div key={step.orderNum} className="col-span-3 grid grid-cols-3 gap-2 w-full">
+                  <div className="col-span-1">
+                    <InputWithLabel
+                      isTextWhite={isAdd}
+                      label=""
+                      name="orderNum"
+                      value={step.orderNum}
+                      onChange={(e) => onChangeStep(step.orderNum , e)}
+                      type="number"
+                      placeholder="Ingresa Orden"
+                    />
+                  </div>
+                  <div className="col-span-2">
+                    <InputWithLabel
+                      label=""
+                      isTextWhite={isAdd}
+                      name="detail"
+                      onChange={(e) => onChangeStep(step.orderNum,e)}
+                      value={step.detail}
+                      type="text"
+                      placeholder="Ingresa descripción"
+                    />
+                  </div>
+                  <div className="col-span-3 flex justify-end items-center gap-4 my-2">
+                    {/* <button
+                      type="button"
+                      className={`${size.medium} ${type.base} ${fontJollyLodger.className}`}
+                    >
+                      Editar
+                    </button> */}
+                    <button
+                      type="button"
+                      className={`${size.medium} ${type.base} ${fontJollyLodger.className}`}
+                      onClick={() =>deleteStep(step.orderNum)}
+                    >
+                      Eliminar
+                    </button>
+                  </div>
+                </div>
+              )
+            })
           )}
           <div className="col-span-1">
             <InputWithLabel
               isTextWhite={isAdd}
               label=""
-              name=""
-              type="text"
+              name="orderStep"
+              value={orderStep}
+              onChange={onChange}
+              type="number"
               placeholder="Ingresa Orden"
             />
           </div>
@@ -48,7 +94,9 @@ export const AddEditSteps = ({ isAdd = true, steps = [] }: IProps) => {
             <InputWithLabel
               label=""
               isTextWhite={isAdd}
-              name=""
+              name="detailStep"
+              onChange={onChange}
+              value={detailStep}
               type="text"
               placeholder="Ingresa descripción"
             />
@@ -58,6 +106,8 @@ export const AddEditSteps = ({ isAdd = true, steps = [] }: IProps) => {
 
       <div className="flex justify-end w-full">
         <button
+          onClick={addStep}
+          type="button"
           className={`
                     ${size.big} ${type.base} ${fontJollyLodger.className} mt-2 text-left`}
         >

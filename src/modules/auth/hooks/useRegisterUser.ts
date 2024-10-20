@@ -73,6 +73,7 @@ export const useRegisterUser = () => {
       toast.error("Ocurrió un error al registrar el usuario", {
         position: "top-right",
       });
+      console.log(error)
     } finally {
       setIsLoading(false);
     }

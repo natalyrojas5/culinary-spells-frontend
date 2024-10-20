@@ -1,4 +1,3 @@
-'use client'
 import { BUTTON } from "@/modules/core/constants";
 import { fontJollyLodger } from "@/modules/core/utils";
 import { IoIosAdd } from "react-icons/io";

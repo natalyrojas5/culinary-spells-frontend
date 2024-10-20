@@ -1,16 +1,19 @@
 import { API } from "@/modules/core/utils";
-import { IGetRecipesSuccessResponse } from "../interfaces";
+import { IGetRecipesResponse, IGetRecipesSuccessResponse } from "../interfaces";
 
-
-export const getRecipes = async () => {
+export const getRecipes = async (): Promise<IGetRecipesResponse> => {
   try {
     const { data: dataAxios } = await API.get("recipe/all");
     const { message, data } = dataAxios as IGetRecipesSuccessResponse;
     return {
       isOk: message === "success",
-      data: data,
+      data,
     };
   } catch (error) {
     console.log(error);
+    return {
+      isOk: false,
+      data: [],
+    };
   }
 };

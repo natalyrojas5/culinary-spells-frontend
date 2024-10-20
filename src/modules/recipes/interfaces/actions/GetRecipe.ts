@@ -6,6 +6,12 @@ interface IStep {
   detail: string;
   orderNum: number;
 }
+
+interface IImage {
+  idImage: number;
+  major: number;
+  link: string;
+}
 export interface IDetailRecipe {
   idRecipe: number;
   name: string;
@@ -26,6 +32,7 @@ export interface IDetailRecipe {
     gender: number;
   };
   steps: IStep[];
+  images: IImage[];
 }
 
 export interface IGetRecipeSuccessResponse extends IResponseAPI {

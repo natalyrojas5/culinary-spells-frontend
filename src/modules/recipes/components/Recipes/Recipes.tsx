@@ -1,26 +1,39 @@
-import { fontMonomaniacOne } from "@/modules/core/utils";
+import { authConfig, fontMonomaniacOne } from "@/modules/core/utils";
 import { Recipe } from "../Recipe";
-import { IRecipe } from "@/modules/recipes/interfaces";
+import { IGetRecipesResponse } from "@/modules/recipes/interfaces";
+import { getServerSession } from "next-auth";
+import { getRecipes } from "../../actions";
 
-interface Props {
-  recipes: IRecipe[];
-}
+export const Recipes = async () => {
+  try {
+    const session = await getServerSession(authConfig);
+    const isLogged = !!session?.user;
 
-export const Recipes = ({ recipes }: Props) => {
-  const hasRecipes = recipes.length > 0;
+    const responseRecipes: IGetRecipesResponse = await getRecipes();
+    const isOk = responseRecipes?.isOk;
 
-  return (
-    <section className="mt-10">
-      <h2 className={`text-3xl text-white ${fontMonomaniacOne.className} mb-6`}>
-        Todas las Recetas
-      </h2>
-      {hasRecipes && (
-        <section className="grid grid-cols-3 gap-6">
-          {recipes.map((recipe) => (
-            <Recipe {...recipe} key={crypto.randomUUID()} />
-          ))}
+    const recipesForLogged = responseRecipes?.data || [];
+    const recipesForNotLogged = responseRecipes?.data?.slice(0, 3);
+    const recipes = isLogged ? recipesForLogged : recipesForNotLogged;
+    const hasRecipes = recipes?.length > 0;
+
+    if (isOk && hasRecipes) {
+      return (
+        <section className="mt-10">
+          <h2
+            className={`text-3xl text-white ${fontMonomaniacOne.className} mb-6`}
+          >
+            Todas las Recetas
+          </h2>
+          <section className="grid grid-cols-3 gap-6">
+            {recipes.map((recipe) => (
+              <Recipe {...recipe} key={crypto.randomUUID()} />
+            ))}
+          </section>
         </section>
-      )}
-    </section>
-  );
+      );
+    }
+  } catch (error) {
+    console.error(error);
+  }
 };
