@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, ChangeEvent } from "react";
 
 type FormValues = { [key: string]: string };
