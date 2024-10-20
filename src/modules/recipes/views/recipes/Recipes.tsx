@@ -6,16 +6,25 @@ import {
   FeaturedRecipes,
   Recipes,
 } from "@/modules/recipes/components";
+import { getServerSession } from "next-auth/next";
+import { authConfig } from "@/modules/core/utils";
 
-export const ViewRecipes = () => {
+export const ViewRecipes = async () => {
+  const session = await getServerSession(authConfig);
+  const isLogged = !!session?.user;
+
+
   return (
     <>
       <Banner />
-      <FeaturedRecipe />
-      <FeaturedRecipes />
+      {isLogged && (
+        <>
+          <FeaturedRecipe />
+          <FeaturedRecipes />
+        </>
+      )}
       <Recipes />
-      <AddRecipe />
-      <ModalAccessRecipe />
+      {isLogged ? <AddRecipe /> : <ModalAccessRecipe />}
     </>
   );
 };

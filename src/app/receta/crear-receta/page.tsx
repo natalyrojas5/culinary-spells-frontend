@@ -1,4 +1,4 @@
-import { ViewCreateEditRecipe } from "@/modules/recipes/views";
+import { ViewCreateEdit } from "@/modules/recipes/views";
 
-const PageCreateRecipe = () => <ViewCreateEditRecipe title="Crear Receta" />;
+const PageCreateRecipe = () => <ViewCreateEdit isAdd />;
 export default PageCreateRecipe;

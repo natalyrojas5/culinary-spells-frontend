@@ -22,7 +22,7 @@ export const FormForgotPassword = () => {
       <button
         type="button"
         className={`${fontMonomaniacOne.className} c-txt-golden-yellow text-3xl underline`}
-        onClick={() => router.push(PATH.login)}
+        onClick={() => router.push(`/${PATH.login}`)}
       >
         Recordé mi contraseña
       </button>

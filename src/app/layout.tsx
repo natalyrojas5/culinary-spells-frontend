@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className="bg-purple-600 flex flex-col gap-14 justify-between min-h-screen">
+      <body className="bg-purple-600 flex flex-col  min-h-screen">
         <LayoutMain>{children}</LayoutMain>
       </body>
     </html>

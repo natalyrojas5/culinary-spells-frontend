@@ -1,4 +1,4 @@
 export * from "./recipes";
-export * from "./recipe-id";
+export * from "./detail";
 export * from "./my-recipes";
-export * from "./create-edit-recipe"
+export * from "./create-edit"
