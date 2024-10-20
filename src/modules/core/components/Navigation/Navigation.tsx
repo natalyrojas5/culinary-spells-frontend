@@ -35,7 +35,7 @@ export const Navigation = () => {
         {isAuthenticated ? (
           <UserLogged />
         ) : (
-          <Link href={PATH.login} className={`${size.big} ${type.base}`}>
+          <Link href={`/${PATH.login}`} className={`${size.big} ${type.base}`}>
             Iniciar Sesión
           </Link>
         )}
