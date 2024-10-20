@@ -2,6 +2,7 @@ import { Recipe } from "@/modules/recipes/components";
 import { fontMonomaniacOne } from "@/modules/core/utils";
 import { getRecipesFeatured } from "../../actions";
 import { IGetRecipesFeaturedResponse } from "../../interfaces";
+import { NotFound } from "@/modules/core/components";
 
 export const FeaturedRecipes = async () => {
   try {
@@ -27,6 +28,8 @@ export const FeaturedRecipes = async () => {
           </section>
         </section>
       );
+    } else {
+      return <NotFound className="mt-10" />;
     }
   } catch (error) {
     console.error(error);
