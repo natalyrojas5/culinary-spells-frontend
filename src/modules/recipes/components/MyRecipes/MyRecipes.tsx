@@ -1,11 +1,27 @@
 import { MyRecipe } from "..";
+import { getMyRecipes } from "../../actions";
+import { IGetRecipesResponse } from "../../interfaces";
+import { NotFound } from "@/modules/core/components";
 
-export const MyRecipes = () => {
-  return (
-    <section className="grid grid-cols-3 gap-6 mt-8">
-      <MyRecipe />
-      <MyRecipe />
-      <MyRecipe />
-    </section>
-  );
+export const MyRecipes = async () => {
+  try {
+    const responseRecipes: IGetRecipesResponse = await getMyRecipes();
+    const isOk = responseRecipes?.isOk;
+
+    const recipes = responseRecipes?.data || [];
+    const hasRecipes = recipes.length > 0;
+    if (isOk && hasRecipes) {
+      return (
+        <section className="grid grid-cols-3 gap-6 mt-8">
+          {recipes.map((recipe) => (
+            <MyRecipe {...recipe} />
+          ))}
+        </section>
+      );
+    } else {
+      return <NotFound />;
+    }
+  } catch (error) {
+    console.error(error);
+  }
 };
