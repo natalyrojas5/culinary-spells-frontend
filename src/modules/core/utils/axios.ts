@@ -8,9 +8,13 @@ export const API = axios.create({ baseURL });
 API.interceptors.request.use(
   async (config) => {
     config.headers["Content-Type"] = "application/json";
-    const session = await getServerSession(authConfig);
-    if(session?.jwtToken) {
-      config.headers.Authorization = `Bearer ${session.jwtToken}`;
+    try {
+      const session = await getServerSession(authConfig);
+      if (session?.jwtToken) {
+        config.headers.Authorization = `Bearer ${session.jwtToken}`;
+      }
+    } catch (error) {
+      console.error("Error getting session:", error);
     }
     return config;
   },

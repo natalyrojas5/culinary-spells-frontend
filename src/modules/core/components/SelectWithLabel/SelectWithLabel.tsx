@@ -51,7 +51,6 @@ export const SelectWithLabel = ({
         )}
       </label>
       <select
-        defaultValue=""
         required={required}
         name={name}
         className="p-3 rounded-lg shadow-lg w-full text-2xl border-4 c-border-golden-yellow outline-none"

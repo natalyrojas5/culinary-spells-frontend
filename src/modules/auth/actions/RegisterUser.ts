@@ -11,6 +11,7 @@ export const registerUserService = async (
     const { status, data } = await API.post("register", user);
 
     const isOk = status === 201;
+
     return {
       isOk,
       message: isOk

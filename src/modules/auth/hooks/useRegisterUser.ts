@@ -47,6 +47,7 @@ export const useRegisterUser = () => {
     setIsLoading(true);
 
     try {
+      console.log("values", values);
       const { password, name, email, idCountry, gender, lastname } = values;
 
       const payload: IRegisterUser = {
@@ -59,6 +60,7 @@ export const useRegisterUser = () => {
       if (lastname) payload.lastname = lastname;
 
       const { isOk, message } = await registerUserService(payload);
+
       if (isOk) {
         toast.success(message, {
           position: "top-right",
@@ -70,6 +72,7 @@ export const useRegisterUser = () => {
         });
       }
     } catch (error) {
+      console.log(error);
       toast.error("Ocurrió un error al registrar el usuario", {
         position: "top-right",
       });
