@@ -1,7 +1,6 @@
 import { API } from "@/modules/core/utils";
 import { IGetContries } from "@/modules/core/interfaces";
 
-
 export const getCountries = async () => {
   try {
     const { data: dataAxios } = await API.get("country");
@@ -9,7 +8,7 @@ export const getCountries = async () => {
 
     return {
       isOk: message === "success",
-      data: data,
+      data,
     };
   } catch (error) {
     console.log(error);

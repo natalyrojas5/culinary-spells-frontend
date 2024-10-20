@@ -1,6 +1,8 @@
-import { getSession } from "next-auth/react";
+"use server";
+import { getServerSession } from "next-auth";
+import { authConfig } from ".";
 
 export const getToken = async () => {
-  const session = await getSession();
-  return session?.jwtToken || null;
+  const session = await getServerSession(authConfig);
+  return session?.jwtToken ?? null;
 };
