@@ -1,11 +1,11 @@
 import { GoBack } from "@/modules/core/components";
 import { DetailRecipe } from "@/modules/recipes/components";
 
-export const ViewRecipeId = () => {
+export const ViewDetail = ({ id }: { id: string }) => {
   return (
     <>
-      <GoBack  description="Agregar Receta"/>
-      <DetailRecipe />
+      <GoBack />
+      <DetailRecipe id={id} />
     </>
   );
 };

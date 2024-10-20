@@ -9,6 +9,9 @@ import { fontJollyLodger, fontMali } from "@/modules/core/utils";
 import { BUTTON } from "@/modules/core/constants";
 import { PATH } from "@/modules/recipes/constants";
 import { IRecipe } from "@/modules/recipes/interfaces";
+import { useAuthenticated } from "@/modules/core/hooks";
+import { useModalStore } from "@/modules/core/stores";
+import { MODAL } from "@/modules/auth/constants";
 
 interface Props extends IRecipe {
   isHighlighted?: boolean;
@@ -18,12 +21,38 @@ export const Recipe = ({
   isHighlighted = false,
   name,
   detail = "",
-  score = 0,
+  count = 0,
+  idRecipe,
+  images = [],
 }: Props) => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
+  const { isAuthenticated } = useAuthenticated();
   const router = useRouter();
+  const modalToggle = useModalStore((state) => state.toggle);
+
+  const firtImage = images[0]?.link;
+  const hasImage = firtImage?.startsWith("http");
+
+  const showModalRegister = () => {
+    modalToggle({ isOpen: true, name: MODAL.accessRecipe });
+  };
+
+  const selectedFeature = () => {
+    if (isAuthenticated) {
+    } else {
+      showModalRegister();
+    }
+  };
+
+  const goDetail = () => {
+    if (isAuthenticated) {
+      router.push(`/${PATH.recipeDetail}/${idRecipe}`);
+    } else {
+      showModalRegister();
+    }
+  };
 
   return (
     <aside
@@ -37,7 +66,7 @@ export const Recipe = ({
     >
       <div className="relative">
         <Image
-          src={empty}
+          src={hasImage ? firtImage : empty}
           width={800}
           height={50}
           alt=""
@@ -48,6 +77,7 @@ export const Recipe = ({
             "bg-white hover:bg-gray-200": !isHighlighted,
             "bg-golden-yellow hover:bg-yellow-600": isHighlighted,
           })}
+          onClick={selectedFeature}
         >
           <FaRegHeart size={30} />
         </button>
@@ -56,7 +86,7 @@ export const Recipe = ({
         className={`mt-4 flex flex-col gap-1 text-white ${fontMali.className}`}
       >
         <p className="text-center font-semibold text-2xl mb-2 c-txt-golden-yellow">
-          Votos: {score === 0 ? "-" : score}
+          Votos: {count === 0 ? "-" : count}
         </p>
         <p className="text-lg">{name}</p>
         <p className="text-lg">{detail ? "Sin descripción" : detail}</p>
@@ -64,7 +94,7 @@ export const Recipe = ({
       <button
         className={`
           ${size.medium} ${type.base} ${fontJollyLodger.className} mt-6`}
-        onClick={() => router.push(`${PATH.recipe}/1`)}
+        onClick={goDetail}
       >
         Ver detalle
       </button>

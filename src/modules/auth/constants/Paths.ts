@@ -1,6 +1,6 @@
 export const PATH = {
-  login: "iniciar-sesion",
-  forgotPassword: "olvide-contrasena",
-  newPassword: "nueva-contrasena",
-  createAccount: "registro-cuenta",
+  login: "auth/iniciar-sesion",
+  forgotPassword: "auth/olvide-contrasena",
+  newPassword: "auth/nueva-contrasena",
+  createAccount: "auth/registro-cuenta",
 };

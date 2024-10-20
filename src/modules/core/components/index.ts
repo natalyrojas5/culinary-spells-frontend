@@ -7,3 +7,4 @@ export * from "./SelectWithLabel";
 export * from "./InputFile"
 export * from "./MultipleInput"
 export * from './InputSearch'
+export * from './Toast'
