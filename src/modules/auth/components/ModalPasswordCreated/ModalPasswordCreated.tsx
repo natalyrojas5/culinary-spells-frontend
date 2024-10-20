@@ -16,7 +16,7 @@ export const ModalPasswordCreated = () => {
           Tu contraseña se creó correctamente.
         </p>
         <Link
-          href={PATH.login}
+          href={`/${PATH.login}`}
           className={`
           ${size.medium} ${type.base} ${fontJollyLodger.className} mx-auto `}
         >
