@@ -9,7 +9,6 @@ API.interceptors.request.use(
     config.headers["Content-Type"] = "application/json";
     try {
       const token = await getToken();
-
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
