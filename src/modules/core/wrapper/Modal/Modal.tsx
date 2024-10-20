@@ -10,8 +10,15 @@ interface Props {
   subtitle?: string;
   children: React.ReactNode;
   name: string;
+  classContent?: string;
 }
-export const Modal = ({ title, subtitle, children, name }: Props) => {
+export const Modal = ({
+  title,
+  subtitle,
+  children,
+  name,
+  classContent,
+}: Props) => {
   const toggle = useModalStore((state) => state.toggle);
   const modalName = useModalStore((state) => state.name);
   const isOpen = useModalStore((state) => state.isOpen);
@@ -44,9 +51,7 @@ export const Modal = ({ title, subtitle, children, name }: Props) => {
                 )}
               </div>
             )}
-            <div className="mx-4 mb-8 max-h-[300px] overflow-auto">
-              {children}
-            </div>
+            <div className={`mx-4 mb-8 ${classContent}`}>{children}</div>
           </div>
         </div>
       </div>

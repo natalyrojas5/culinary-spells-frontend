@@ -1,5 +1,8 @@
 import { fontMonomaniacOne } from "@/modules/core/utils";
-import { FormNewPassword, ModalPasswordCreated } from "@/modules/auth/components";
+import {
+  FormNewPassword,
+  ModalPasswordCreated,
+} from "@/modules/auth/components";
 
 export const ViewNewPassword = () => {
   return (

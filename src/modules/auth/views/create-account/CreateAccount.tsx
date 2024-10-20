@@ -5,9 +5,12 @@ import { PATH } from "@/modules/auth/constants";
 import Link from "next/link";
 import { getCountries } from "@/modules/core/actions";
 
-export const ViewCreateAccount = async() => {
+export const ViewCreateAccount = async () => {
   const { data } = (await getCountries()) || { data: [] };
-  const countries = data.map(({ idCountry, niceName }) => ({ value: idCountry, text: niceName }));
+  const countries = data.map(({ idCountry, niceName }) => ({
+    value: idCountry,
+    text: niceName,
+  }));
 
   return (
     <section className="text-center">

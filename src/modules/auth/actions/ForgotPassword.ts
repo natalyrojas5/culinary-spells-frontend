@@ -5,7 +5,7 @@ export const forgotPasswordService = async ({
   email,
 }: IForgotPasswordRequest): Promise<IForgotPasswordResponse> => {
   try {
-    const { status } = await API.post("/password/send-email", {
+    const { status } = await API.post("password/send-email", {
       mailTo: email,
     });
 
