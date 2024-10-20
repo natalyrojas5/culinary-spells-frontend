@@ -5,14 +5,14 @@ import { InputPassword, InputWithLabel } from "@/modules/core/components";
 import { PATH } from "@/modules/auth/constants";
 import { BUTTON } from "@/modules/core/constants";
 import { fontJollyLodger, fontMonomaniacOne } from "@/modules/core/utils";
-import { useLoginUser } from "@/modules/auth/hooks";
+import { useLogin } from "@/modules/auth/hooks";
 
 export const FormLogin = () => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
 
-  const { login, handleChange, values } = useLoginUser();
+  const { login, handleChange, values } = useLogin();
 
   return (
     <form

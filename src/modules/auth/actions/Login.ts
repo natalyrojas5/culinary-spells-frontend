@@ -1,6 +1,6 @@
 import { signIn } from "next-auth/react";
 
-export const loginUserService = async (formData: FormData) => {
+export const loginService = async (formData: FormData) => {
   try {
     const credentials = Object.fromEntries(formData);
 

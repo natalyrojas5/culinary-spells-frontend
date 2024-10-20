@@ -4,7 +4,7 @@ import { InputPassword, InputWithLabel } from "@/modules/core/components";
 import { SelectWithLabel } from "@/modules/core/components/SelectWithLabel";
 import { BUTTON, SELECT_GENDER } from "@/modules/core/constants";
 import { fontJollyLodger } from "@/modules/core/utils";
-import { useRegisterUser } from "@/modules/auth/hooks";
+import { useRegister } from "@/modules/auth/hooks";
 
 interface IProps {
   countries: Array<{ value: number; text: string }>;
@@ -15,7 +15,7 @@ export const FormCreateAccount = ({ countries }: IProps) => {
     goldenYellow: { size, type },
   } = BUTTON;
 
-  const { handleChange, register, isLoading, values } = useRegisterUser();
+  const { handleChange, register, isLoading, values } = useRegister();
   return (
     <form
       className="flex flex-col gap-4 items-center w-[500px] mx-auto mt-8"
