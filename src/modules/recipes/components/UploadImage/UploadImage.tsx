@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
-import { CldUploadWidget } from "next-cloudinary";
+import { CldUploadWidget  } from "next-cloudinary";
 import { BUTTONCLOUDINARY } from "@/modules/core/constants";
 import { fontMonomaniacOne } from "@/modules/core/utils";
 import { toast } from "react-toastify";
@@ -56,13 +56,14 @@ export const UploadImage = ({
             height={300}
             width={400}
             id={name}
+            crossOrigin="anonymous"
             alt="Image Subida Cloudinary"
             className="rounded-lg w-full h-[400px] object-contain"
           />
           <CldUploadWidget
             uploadPreset="test-ia"
             options={BUTTONCLOUDINARY.options}
-            onSuccess={(result) => {
+            onSuccess={async (result) => {
               toast.success("Imagen subida para modificar", {
                 position: "top-right",
               });

@@ -186,9 +186,9 @@ export const FormCreateEditRecipe = ({ isAdd = true , typesRecipes}: IProps) => 
       <button
         type="submit"
         disabled={isLoading}
-        className={`${size.big} ${type.base} ${fontJollyLodger.className} mt-6 text-left`}
+        className={`${size.big} ${type.base} ${fontJollyLodger.className} mt-6 text-left ${isLoading ? 'opacity-50' : ''}`}
       >
-        Agregar Receta
+        {isAdd ? 'Agregar Receta' : 'Editar Receta'}
       </button>
     </form>
   );

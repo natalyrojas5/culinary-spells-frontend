@@ -1,3 +1,4 @@
+'use client'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -20,7 +21,7 @@ export const useRecipe = () => {
     name: "",
     detail: "",
     cookingTime: "",
-    recipeTypes: "",
+    recipeTypes: "1",
     detailStep: "",
     orderStep: ""
   });
@@ -34,8 +35,8 @@ export const useRecipe = () => {
   }
   interface IData {
     recipe: IRecipe;
-    majorImageIndex?: string;
-    // images?: Array<Blob>;
+    majorImageIndex: string;
+    images: Array<Blob>;
 
   }
 
@@ -43,10 +44,12 @@ export const useRecipe = () => {
     recipe: {
       name: "",
       detail: "",
-      recipeTypes: "",
+      recipeTypes: "1",
       cookingTime: "",
       steps: [],
-    }
+    },
+    images:[],
+    majorImageIndex:""
   };
 
   const [imagesPreview, setImagesPreview] = useState([
@@ -61,32 +64,43 @@ export const useRecipe = () => {
   const [images, setImages] = useState([]);
 
   const getImagesBlob = async () => {
-    // const images = Object.values(imagesPreview).filter((image) => {
-    //   return image.id !== "" && image.imageUrl !== "";
-    // });
+    const images = Object.values(imagesPreview).filter((image) => {
+      return image.id !== "" && image.imageUrl !== "";
+    });
 
-    // const imagesBlob: Blob[] = [];
-    // for (let i = 0; i < images.length; i++) {
-    //   const canvas: HTMLCanvasElement = document.createElement("canvas");
-    //   const ctx: CanvasRenderingContext2D = canvas.getContext(
-    //     "2d"
-    //   ) as CanvasRenderingContext2D;
-    //   const img = document.getElementById(images[i].name) as HTMLImageElement;
-    //   ctx.drawImage(img, 0, 0);
-    //   canvas.width = img.width;
-    //   canvas.height = img.height;
-    //   const blob: Blob = await new Promise((resolve, reject) => {
-    //     canvas.toBlob((blob) => {
-    //       if (blob) {
-    //         resolve(blob);
-    //       } else {
-    //         reject(new Error("No se pudo convertir la imagen a Blob"));
-    //       }
-    //     }, "image/jpeg"); // Puedes cambiar el tipo de imagen si es necesario
-    //   });
-    //   imagesBlob.push(blob);
-    // }
-    // return imagesBlob;
+    const imagesBlob: Blob[] = [];
+    for (let i = 0; i < images.length; i++) {
+      const img = document.getElementById(images[i].name) as HTMLImageElement
+      const canvas: HTMLCanvasElement = document.createElement('canvas') as HTMLCanvasElement;
+      const ctx: CanvasRenderingContext2D = canvas.getContext(
+        "2d"
+      ) as CanvasRenderingContext2D;
+      if (img.complete) {
+        const imgRect = img.getBoundingClientRect()
+        canvas.width = imgRect.width;
+        canvas.height = imgRect.height;
+        // Dibujar la imagen en el canvas
+        ctx?.drawImage(img, 0, 0, imgRect.width, imgRect.height);
+        // Convertir el contenido del canvas a un Blob
+        const blob = await new Promise<Blob | null>((resolve) => {
+            canvas.toBlob((blob) => {
+                resolve(blob);
+            }, 'image/png');
+        });
+
+        if (blob) {
+            const imageUrl = URL.createObjectURL(blob);
+
+            console.log(imageUrl)
+            
+        } else {
+            console.error("No se pudo convertir la imagen a Blob");
+        }
+      } else {
+          console.error("La imagen aún no se ha cargado completamente.");
+      } 
+    }
+    return imagesBlob;
   };
 
   const getValuesRecipeForm = async () => {
@@ -98,8 +112,8 @@ export const useRecipe = () => {
         cookingTime: values.cookingTime,
         steps: steps
       },
-      // images: await getImagesBlob(),
-      // majorImageIndex: "0",
+      images: await getImagesBlob(),
+      majorImageIndex: "0",
     };
     return infoData;
   };
@@ -123,26 +137,34 @@ export const useRecipe = () => {
   const isValid = await isFormValid();
 
   if (!isValid) return;
-  console.log(dataForm)
-  // setIsLoading(true);
+  setIsLoading(true);
   const formData = new FormData();
-  formData.append("recipe", '"'+JSON.stringify(dataForm.recipe)+'"');
-  // formData.append("recipe[detail]", dataForm.recipe.detail);
-  // formData.append("recipe[recipeTypes]", dataForm.recipe.recipeTypes.toString());
-  // formData.append("recipe[cookingTime]", dataForm.recipe.cookingTime.toString());
+  formData.append("recipe", new Blob([JSON.stringify(dataForm.recipe)] , { type: "application/json" }));
+ 
+  dataForm.images.forEach((image) => {
+      formData.append("images", image);
+  });
 
-  // dataForm.recipe.steps.forEach((step, index) => {
-  //     formData.append(`recipe[steps][${index}][name]`, step.name);
-  //     formData.append(`recipe[steps][${index}][detail]`, step.detail);
-  //     formData.append(`recipe[steps][${index}][orderNum]`, step.orderNum);
-  // });
-  // dataForm.recipe.images.forEach((image, index) => {
-  //     formData.append(`images[${index}]`, image);
-  // });
+  formData.append("majorImageIndex", dataForm.majorImageIndex.toString());
+  try{
+    const { isOk  } = await CreateRecipe(formData);
+    if (isOk) {
+      toast.success("Receta creado correctamente, automaticamente se redirigira a la vista de sus recetas", {
+        position: "top-right",
+      });
+    } else {
+      toast.error("No se pudo crear su receta correctamente", {
+        position: "top-right",
+      });
+    }
+  }catch(error){
+    console.log(error)
+    toast.error("No se pudo crear su receta correctamente", {
+      position: "top-right",
+    });
+  }
 
-  // formData.append("majorImageIndex", dataForm.majorImageIndex.toString());
-    const { isOk, data } = await CreateRecipe();
-    // resetForm()
+  setIsLoading(false);
   };
 
   const cleanFormStep = () => {
