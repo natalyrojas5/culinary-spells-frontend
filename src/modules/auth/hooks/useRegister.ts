@@ -3,10 +3,10 @@ import { toast } from "react-toastify";
 import { useForm } from "@/modules/core/hooks";
 import { formatErrors } from "@/modules/core/utils";
 import { SchemaRegisterUser } from "../schemas";
-import { registerUserService } from "../actions";
-import { IRegisterUser } from "../interfaces";
+import { registerService } from "../actions";
+import { IRegisterRequest } from "../interfaces";
 
-export const useRegisterUser = () => {
+export const useRegister = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { values, handleChange, resetForm } = useForm({
     password: "",
@@ -49,7 +49,7 @@ export const useRegisterUser = () => {
     try {
       const { password, name, email, idCountry, gender, lastname } = values;
 
-      const payload: IRegisterUser = {
+      const payload: IRegisterRequest = {
         password,
         name,
         email,
@@ -58,7 +58,7 @@ export const useRegisterUser = () => {
       };
       if (lastname) payload.lastname = lastname;
 
-      const { isOk, message } = await registerUserService(payload);
+      const { isOk, message } = await registerService(payload);
 
       if (isOk) {
         toast.success(message, {

@@ -1,2 +1,3 @@
-export * from "./useRegisterUser";
-export * from "./useLoginUser";
+export * from "./useRegister";
+export * from "./useLogin";
+export * from "./useForgotPassword";

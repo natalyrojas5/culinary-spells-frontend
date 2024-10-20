@@ -2,10 +2,14 @@ import Image from "next/image";
 import { fontMali } from "../../utils";
 import avatarSad from "@/modules/core/assets/avatar-sad.png";
 
-export const NotFound = () => {
+interface IProps {
+  className?: string;
+}
+
+export const NotFound = ({ className = "" }: IProps) => {
   return (
     <section
-      className={`p-4 bg-purple-700 ${fontMali.className} flex gap-4 w-full items-center rounded-lg`}
+      className={`p-4 bg-purple-700 ${fontMali.className} flex gap-4 w-full items-center rounded-lg ${className}`}
     >
       <Image
         src={avatarSad}
