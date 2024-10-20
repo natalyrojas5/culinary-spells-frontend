@@ -29,7 +29,7 @@ export const FeaturedRecipes = async () => {
         </section>
       );
     } else {
-      return <NotFound />;
+      return <NotFound className="mt-10" />;
     }
   } catch (error) {
     console.error(error);
