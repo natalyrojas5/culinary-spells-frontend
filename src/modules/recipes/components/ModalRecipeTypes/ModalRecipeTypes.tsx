@@ -1,12 +1,12 @@
 import { fontMali } from "@/modules/core/utils";
 import { Modal } from "@/modules/core/wrapper";
 import { MODAL } from "../../constants";
-import { getRecipeTypes } from "../../actions";
+import { getRecipeTypesService } from "../../actions";
 import { NotFound } from "@/modules/core/components";
 
 export const ModalRecipeTypes = async () => {
   try {
-    const response = await getRecipeTypes();
+    const response = await getRecipeTypesService();
     const isOk = response?.isOk;
     const types = response?.data;
 

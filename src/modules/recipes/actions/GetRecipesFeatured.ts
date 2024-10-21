@@ -4,7 +4,7 @@ import {
   IGetRecipesFeaturedSuccessResponse,
 } from "../interfaces";
 
-export const getRecipesFeatured =
+export const getRecipesFeaturedService =
   async (): Promise<IGetRecipesFeaturedResponse> => {
     try {
       const { data: dataAxios } = await API.get("recipe/top-recipes");

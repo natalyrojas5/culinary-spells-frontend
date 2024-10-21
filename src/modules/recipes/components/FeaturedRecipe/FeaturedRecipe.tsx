@@ -4,7 +4,7 @@ import { GiPodiumWinner } from "react-icons/gi";
 import { fontJollyLodger, fontMonomaniacOne } from "@/modules/core/utils";
 import { BUTTON } from "@/modules/core/constants";
 import { RecipeCreatorSmall } from "../RecipeCreatorSmall";
-import { getRecipeFeatured } from "../../actions";
+import { getRecipeFeaturedService } from "../../actions";
 import { IGetRecipeFeaturedResponse } from "../../interfaces";
 import Link from "next/link";
 import { PATH } from "../../constants";
@@ -15,7 +15,7 @@ export const FeaturedRecipe = async () => {
   } = BUTTON;
   try {
     const responseRecipeFeatured: IGetRecipeFeaturedResponse =
-      await getRecipeFeatured();
+      await getRecipeFeaturedService();
 
     const isOk = responseRecipeFeatured?.isOk;
     const recipeFeatured = responseRecipeFeatured?.data[0] || {};
