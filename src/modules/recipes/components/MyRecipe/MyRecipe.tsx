@@ -8,6 +8,7 @@ import { MdEdit, MdDelete } from "react-icons/md";
 import { IRecipe } from "../../interfaces";
 import { useRouter } from "next/navigation";
 import { PATH } from "../../constants";
+import { useRemoveRecipe } from "../../hooks";
 
 export const MyRecipe = ({
   name,
@@ -16,6 +17,7 @@ export const MyRecipe = ({
   images = [],
 }: IRecipe) => {
   const { goldenYellow, orange } = BUTTON;
+  const { deleteRecipe } = useRemoveRecipe();
   const buttonClass = `${fontJollyLodger.className} w-full flex gap-1 items-center`;
 
   const firtImage = images[0]?.link;
@@ -61,6 +63,7 @@ export const MyRecipe = ({
 
           <button
             className={`${orange.size.medium} ${orange.type.base} ${buttonClass}`}
+            onClick={() => deleteRecipe(idRecipe)}
           >
             <MdDelete />
             Eliminar
