@@ -72,6 +72,11 @@ export const UploadImage = ({
             onClose={() => {
               document.body.style.overflow = 'auto';
             }}
+            onError={() => {
+              toast.error("Hubo un error subiendo la imagen porfavor vuelva a intentarlo", {
+                position: "top-right",
+              });
+            }}
           >
             {({ open }) => {
               return (

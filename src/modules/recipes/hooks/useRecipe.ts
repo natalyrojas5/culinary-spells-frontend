@@ -24,7 +24,7 @@ export const useRecipe = () => {
     name: "",
     detail: "",
     cookingTime: "",
-    recipeTypes: "1",
+    recipeTypes: "",
     detailStep: "",
     orderStep: ""
   });
@@ -47,7 +47,7 @@ export const useRecipe = () => {
     recipe: {
       name: "",
       detail: "",
-      recipeTypes: "1",
+      recipeTypes: "",
       cookingTime: "",
       steps: [],
     },

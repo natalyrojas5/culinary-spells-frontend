@@ -13,8 +13,8 @@ export const MyRecipes = async () => {
     if (isOk && hasRecipes) {
       return (
         <section className="grid grid-cols-3 gap-6 mt-8">
-          {recipes.map((recipe) => (
-            <MyRecipe {...recipe} />
+          {recipes.map((recipe,i) => (
+            <MyRecipe key={i} {...recipe} />
           ))}
         </section>
       );

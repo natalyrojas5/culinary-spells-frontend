@@ -22,6 +22,7 @@ interface IProps {
 interface Options {
   value: number | string;
   text: string;
+  recipeInfo?: object;
 }
 
 export const FormCreateEditRecipe = ({ isAdd = true , typesRecipes}: IProps) => {

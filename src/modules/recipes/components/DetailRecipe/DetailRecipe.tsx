@@ -1,3 +1,4 @@
+import { NotFound } from "@/modules/core/components";
 import { RecipeBanner } from ".";
 import { getRecipe } from "../../actions";
 import { IGetRecipeResponse } from "../../interfaces";
@@ -5,6 +6,7 @@ import { RecipeCreator } from "./RecipeCreator";
 import { RecipeDescription } from "./RecipeDescription";
 import { RecipePreparation } from "./RecipePreparation";
 import { RecipeSummary } from "./RecipeSummary";
+import {  RecipeImages } from "./RecipeImages";
 
 export const DetailRecipe = async ({ id }: { id: string }) => {
   try {
@@ -27,15 +29,27 @@ export const DetailRecipe = async ({ id }: { id: string }) => {
           countryName = "País no especificado",
           gender = 0,
         } = {},
+        isLike,
+        idRecipe,
       } = recipe;
+
+      const allImages = recipe?.images?.filter((image) => image.major === 0);
+      const hasImages = allImages.length > 0;
 
       return (
         <main className="flex flex-col gap-12 mt-8">
-          <RecipeBanner name={name} score={count} />
+          <RecipeBanner
+            name={name}
+            score={count}
+            idRecipe={idRecipe}
+            isLike={isLike}
+            images={recipe.images || []}
+          />
           <RecipeSummary
             recipeTypeName={recipeTypeName}
             cookingTime={cookingTime}
           />
+          <RecipeImages images={allImages} />
           <RecipeDescription description={detail} />
           <RecipePreparation steps={steps} />
           <RecipeCreator
@@ -47,16 +61,12 @@ export const DetailRecipe = async ({ id }: { id: string }) => {
         </main>
       );
     } else {
-      return (
-        <p className="font-extrabold text-4xl c-txt-golden-yellow">
-          Receta no encontrada o ocurrió un error.
-        </p>
-      );
+      return <NotFound className="mt-8" />;
     }
   } catch (error) {
     console.error("Error al obtener la receta:", error);
     return (
-      <p className="font-extrabold text-4xl c-txt-golden-yellow">
+      <p className="font-extrabold text-4xl c-txt-golden-yellow mt-8">
         No se pueden cargar los detalles de la receta en este momento.
       </p>
     );

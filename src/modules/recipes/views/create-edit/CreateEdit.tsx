@@ -14,6 +14,7 @@ export const ViewCreateEdit = async ({ isAdd }: IProps) => {
   const typesRecipes = data.map(({ idRecipeType , name }) =>({
     value: idRecipeType , text: name
   }))
+  
   return (
     <>
       <GoBack />

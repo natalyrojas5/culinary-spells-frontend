@@ -20,6 +20,7 @@ export interface IDetailRecipe {
   cookingTime: string;
   recipeTypes: number;
   recipeTypeName: string;
+  isLike: boolean;
 
   user: {
     idUser: number;
