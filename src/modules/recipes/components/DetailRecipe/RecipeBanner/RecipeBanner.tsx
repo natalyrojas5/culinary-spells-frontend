@@ -1,18 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import empty from "@/modules/core/assets/empty.jpg";
 import { BUTTON } from "@/modules/core/constants";
 import { fontJollyLodger, fontMali } from "@/modules/core/utils";
+import { useAddRecipeLike, useRemoveRecipeLike } from "@/modules/recipes/hooks";
 
 interface IProps {
   name: string;
   score: number;
-  image: string;
+  image?: string;
+  isLike?: boolean;
+  idRecipe: number;
 }
 
-export const RecipeBanner = ({ name, score }: IProps) => {
+export const RecipeBanner = ({ name, score, isLike, idRecipe }: IProps) => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
+
+  const { addLike } = useAddRecipeLike();
+  const { deleteLike } = useRemoveRecipeLike();
   return (
     <aside className="flex gap-4 items-center">
       <Image
@@ -25,18 +33,27 @@ export const RecipeBanner = ({ name, score }: IProps) => {
       <div
         className={`flex flex-col items-center gap-3 w-full ${fontMali.className}`}
       >
-        <h1 className="font-extrabold text-4xl c-txt-golden-yellow">
-          {name}
-        </h1>
+        <h1 className="font-extrabold text-4xl c-txt-golden-yellow">{name}</h1>
         <p className="font-semibold text-2xl leading-4 text-white">
           Cantidad de votos: {score}
         </p>
-        <button
-          className={`
+        {isLike ? (
+          <button
+            onClick={() => deleteLike(idRecipe)}
+            className={`
           ${size.big} ${type.base} ${fontJollyLodger.className} mt-6`}
-        >
-          Destacar Receta
-        </button>
+          >
+            Remover Destacado de Receta
+          </button>
+        ) : (
+          <button
+            onClick={() => addLike(idRecipe)}
+            className={`
+          ${size.big} ${type.base} ${fontJollyLodger.className} mt-6`}
+          >
+            Destacar Receta
+          </button>
+        )}
       </div>
     </aside>
   );

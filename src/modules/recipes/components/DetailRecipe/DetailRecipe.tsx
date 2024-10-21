@@ -1,3 +1,4 @@
+import { NotFound } from "@/modules/core/components";
 import { RecipeBanner } from ".";
 import { getRecipe } from "../../actions";
 import { IGetRecipeResponse } from "../../interfaces";
@@ -27,11 +28,18 @@ export const DetailRecipe = async ({ id }: { id: string }) => {
           countryName = "País no especificado",
           gender = 0,
         } = {},
+        isLike,
+        idRecipe,
       } = recipe;
 
       return (
         <main className="flex flex-col gap-12 mt-8">
-          <RecipeBanner name={name} score={count} />
+          <RecipeBanner
+            name={name}
+            score={count}
+            idRecipe={idRecipe}
+            isLike={isLike}
+          />
           <RecipeSummary
             recipeTypeName={recipeTypeName}
             cookingTime={cookingTime}
@@ -47,16 +55,12 @@ export const DetailRecipe = async ({ id }: { id: string }) => {
         </main>
       );
     } else {
-      return (
-        <p className="font-extrabold text-4xl c-txt-golden-yellow">
-          Receta no encontrada o ocurrió un error.
-        </p>
-      );
+      return <NotFound className="mt-8" />;
     }
   } catch (error) {
     console.error("Error al obtener la receta:", error);
     return (
-      <p className="font-extrabold text-4xl c-txt-golden-yellow">
+      <p className="font-extrabold text-4xl c-txt-golden-yellow mt-8">
         No se pueden cargar los detalles de la receta en este momento.
       </p>
     );

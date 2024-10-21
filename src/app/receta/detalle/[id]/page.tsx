@@ -1,3 +1,5 @@
+export const revalidate = 1000;
+
 import { ViewDetail } from "@/modules/recipes/views";
 
 interface PageProps {

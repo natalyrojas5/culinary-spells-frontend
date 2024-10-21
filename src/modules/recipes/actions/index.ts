@@ -4,3 +4,5 @@ export * from "./GetRecipeTypes";
 export * from "./GetRecipesFeatured";
 export * from "./GetRecipeFeatured";
 export * from "./GetMyRecipes";
+export * from "./AddRecipeLike";
+export * from "./RemoveRecipeLike";
