@@ -6,25 +6,40 @@ import { BUTTON } from "@/modules/core/constants";
 import { fontJollyLodger, fontMali } from "@/modules/core/utils";
 import { useAddRecipeLike, useRemoveRecipeLike } from "@/modules/recipes/hooks";
 
+interface IImage {
+  idImage: number;
+  major: number;
+  link: string;
+}
 interface IProps {
   name: string;
   score: number;
-  image?: string;
+  images?: IImage[];
   isLike?: boolean;
   idRecipe: number;
 }
 
-export const RecipeBanner = ({ name, score, isLike, idRecipe }: IProps) => {
+export const RecipeBanner = ({
+  name,
+  score,
+  isLike,
+  idRecipe,
+  images = [],
+}: IProps) => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
 
+  const firtImage = images.filter((img) => img.major === 1)[0]?.link;
+  const hasImage = firtImage?.startsWith("http");
+
   const { addLike } = useAddRecipeLike();
   const { deleteLike } = useRemoveRecipeLike();
+
   return (
     <aside className="flex gap-4 items-center">
       <Image
-        src={empty}
+        src={hasImage ? firtImage : empty}
         width={800}
         height={50}
         alt=""
