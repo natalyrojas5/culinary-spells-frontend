@@ -9,6 +9,7 @@ import { PATH as PATH_RECIPES } from "@/modules/recipes/constants";
 import { BUTTON } from "@/modules/core/constants";
 import { UserLogged } from "../UserLogged";
 import { useAuthenticated, useNavigation } from "../../hooks";
+import { usePathname } from "next/navigation";
 
 export const Navigation = () => {
   const {
@@ -18,6 +19,8 @@ export const Navigation = () => {
 
   const { isAuthenticated } = useAuthenticated();
   const { goToMyRecipes, isOpen, logout } = useNavigation();
+  const pathName = usePathname();
+  const IS_LOGIN = pathName.includes("iniciar");
 
   return (
     <header
@@ -36,6 +39,13 @@ export const Navigation = () => {
         </Link>
         {isAuthenticated ? (
           <UserLogged />
+        ) : IS_LOGIN ? (
+          <Link
+            href={`/${PATH_RECIPES.recipes}`}
+            className={`${size.big} ${type.base}`}
+          >
+            Recetas
+          </Link>
         ) : (
           <Link href={`/${PATH.login}`} className={`${size.big} ${type.base}`}>
             Iniciar Sesión
