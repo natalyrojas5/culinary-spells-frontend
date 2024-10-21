@@ -53,14 +53,14 @@ export const FormCreateEditRecipe = ({ isAdd = true , typesRecipes}: IProps) => 
         isAdd={isAdd}
         filters={RECIPE_FORM_FILTERS}
         name="image1"
-        getImagePrompt={(prompt,idImage) => getImagePromt(prompt,idImage)}
+        getImagePrompt={(prompt,idImage) => getImagePromt(prompt,idImage,"image1")}
         imageInfo={imagesPreview[0]}
         saveImage={(value: any,name: string) => {
           imagesPreview[0].id = value.public_id
           imagesPreview[0].imageUrl = value.url
           imagesPreview[0].name = name
-          setImagesPreview({
-            ...imagesPreview,
+          setImagesPreview((prevState) => {
+            return prevState.map((step) => step.name === name ? { id : value.public_id , imageUrl : value.url , name : name } : step);
           })
         }}
       />
@@ -85,14 +85,17 @@ export const FormCreateEditRecipe = ({ isAdd = true , typesRecipes}: IProps) => 
         isAdd={isAdd}
         filters={RECIPE_FORM_FILTERS}
         name="image2"
-        getImagePrompt={(prompt,idImage) => getImagePromt(prompt,idImage)}
+        getImagePrompt={(prompt,idImage) => getImagePromt(prompt,idImage, "image2")}
         imageInfo={imagesPreview[1]}
         saveImage={(value: any , name:string) => {
+          setImagesPreview((prevState) => {
+            return prevState.map((step) => step.name === name ? { id : value.public_id , imageUrl : value.url , name : name } : step);
+          })
           imagesPreview[1].id = value.public_id
           imagesPreview[1].imageUrl = value.url
           imagesPreview[1].name = name
-          setImagesPreview({
-            ...imagesPreview,
+          setImagesPreview((prevState) => {
+            return prevState.map((step) => step.name === name ? { id : value.public_id , imageUrl : value.url , name : name } : step);
           })
         }}
       />
@@ -101,15 +104,15 @@ export const FormCreateEditRecipe = ({ isAdd = true , typesRecipes}: IProps) => 
         labelBtnUpload={imagesPreview[2].imageUrl === "" ? "Subir Foto" : "Cambiar Foto"}
         isAdd={isAdd}
         filters={RECIPE_FORM_FILTERS}
-        getImagePrompt={(prompt,idImage) => getImagePromt(prompt,idImage)}
+        getImagePrompt={(prompt,idImage) => getImagePromt(prompt,idImage,'image3')}
         name="image3" 
         imageInfo={imagesPreview[2]}
         saveImage={(value: any,name : string) => {
           imagesPreview[2].id = value.public_id
           imagesPreview[2].imageUrl = value.url
           imagesPreview[2].name = name
-          setImagesPreview({
-            ...imagesPreview,
+          setImagesPreview((prevState) => {
+            return prevState.map((step) => step.name === name ? { id : value.public_id , imageUrl : value.url , name : name } : step);
           })
         }}
       />
@@ -118,15 +121,15 @@ export const FormCreateEditRecipe = ({ isAdd = true , typesRecipes}: IProps) => 
         labelBtnUpload={imagesPreview[3].imageUrl === "" ? "Subir Foto" : "Cambiar Foto"}
         isAdd={isAdd}
         filters={RECIPE_FORM_FILTERS}
-        getImagePrompt={(prompt,idImage) => getImagePromt(prompt,idImage)}
+        getImagePrompt={(prompt,idImage) => getImagePromt(prompt,idImage,"image4")}
         name="image4"
         imageInfo={imagesPreview[3]}
         saveImage={(value: any , name: string) => {
           imagesPreview[3].id = value.public_id
           imagesPreview[3].imageUrl = value.url
           imagesPreview[3].name = name
-          setImagesPreview({
-            ...imagesPreview,
+          setImagesPreview((prevState) => {
+            return prevState.map((step) => step.name === name ? { id : value.public_id , imageUrl : value.url , name : name } : step);
           })
         }}
       />

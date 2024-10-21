@@ -4,4 +4,5 @@ export const PATH = {
   createRecipe : "receta/crear",
   editRecipe: "receta/editar",
   recipeDetail: "receta/detalle",
+  myRecipes: "receta/mis-recetas"
 };

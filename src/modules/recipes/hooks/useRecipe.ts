@@ -7,6 +7,8 @@ import { formatErrors } from "@/modules/core/utils";
 import { SchemaCreateEditRecipe } from "../schemas";
 import { getCldImageUrl } from "next-cloudinary";
 import { CreateRecipe } from "../actions";
+import { useRouter } from "next/navigation";
+import { PATH } from "../constants";
 // import { IRegisterUser } from "../interfaces";
 
 interface Step {
@@ -16,6 +18,7 @@ interface Step {
 }
 
 export const useRecipe = () => {
+  const router = useRouter()
   const [isLoading, setIsLoading] = useState(false);
   const { values, handleChange } = useForm({
     name: "",
@@ -75,6 +78,8 @@ export const useRecipe = () => {
       const ctx: CanvasRenderingContext2D = canvas.getContext(
         "2d"
       ) as CanvasRenderingContext2D;
+      console.log(images[i])
+      console.log(img)
       if (img.complete) {
         const imgRect = img.getBoundingClientRect()
         canvas.width = imgRect.width;
@@ -90,8 +95,8 @@ export const useRecipe = () => {
 
         if (blob) {
             const imageUrl = URL.createObjectURL(blob);
-
             console.log(imageUrl)
+            imagesBlob.push(blob)
             
         } else {
             console.error("No se pudo convertir la imagen a Blob");
@@ -152,6 +157,7 @@ export const useRecipe = () => {
       toast.success("Receta creado correctamente, automaticamente se redirigira a la vista de sus recetas", {
         position: "top-right",
       });
+      router.push(`/${PATH.myRecipes}`);
     } else {
       toast.error("No se pudo crear su receta correctamente", {
         position: "top-right",
@@ -178,14 +184,14 @@ export const useRecipe = () => {
     });
   };
 
-  const getImagePromt = (prompt: string, idImage: string) => {
+  const getImagePromt = (prompt: string, idImage: string , name :string) => {
     const urlNewPhoto = getCldImageUrl({
       src: idImage,
       replaceBackground: prompt,
     });
 
     const updatedItems = Object.values(imagesPreview).map((image) =>
-      image.id === idImage ? { id: idImage, imageUrl: urlNewPhoto } : image
+      image.id === idImage ? { id: idImage, imageUrl: urlNewPhoto , name: name} : image
     ) as any;
 
     setImagesPreview(updatedItems);

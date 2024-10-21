@@ -8,21 +8,21 @@ export const RECIPE_FORM_FILTERS = [
     {
         label: 'Calabazas',
         get propmt (){
-            return "Pumkins"
+            return "Add a spooky with background animated by adding Pumpkins bones and spiders in the background but let everything be animated with Halloween theme"
         },
         ref:calabaza
     },
     {
         label: 'Fantasmas',
         get propmt (){
-            return "Ghosts"
+            return "Add a spooky with background animated by adding Ghosts bones and spiders in the background but let everything be animated with Halloween theme"
         },
         ref:calabazaGhost
     },
     {
         label: 'Fuego',
         get propmt (){
-            return "Fired"
+            return "Add a spooky with background animated by adding Fired bones and spiders in the background but let everything be animated with Halloween theme"
         },
         ref:calabazaFuego
     }

@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className="bg-purple-600 flex flex-col  min-h-screen">
+      <body className="bg-purple-600 flex flex-col  min-h-screen overflow-auto">
         <LayoutMain>{children}</LayoutMain>
       </body>
     </html>

@@ -33,7 +33,7 @@ export const MyRecipe = ({
         width={800}
         height={50}
         alt={name}
-        className="rounded-lg w-[500px] h-[200px] object-cover"
+        className="rounded-lg w-[500px] h-[200px] object-contain"
       />
 
       <div

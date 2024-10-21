@@ -69,6 +69,9 @@ export const UploadImage = ({
               });
               saveImage(result.info,name)
             }}
+            onClose={() => {
+              document.body.style.overflow = 'auto';
+            }}
           >
             {({ open }) => {
               return (
