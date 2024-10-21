@@ -6,6 +6,7 @@ import { RecipeCreator } from "./RecipeCreator";
 import { RecipeDescription } from "./RecipeDescription";
 import { RecipePreparation } from "./RecipePreparation";
 import { RecipeSummary } from "./RecipeSummary";
+import {  RecipeImages } from "./RecipeImages";
 
 export const DetailRecipe = async ({ id }: { id: string }) => {
   try {
@@ -32,6 +33,9 @@ export const DetailRecipe = async ({ id }: { id: string }) => {
         idRecipe,
       } = recipe;
 
+      const allImages = recipe?.images?.filter((image) => image.major === 0);
+      const hasImages = allImages.length > 0;
+
       return (
         <main className="flex flex-col gap-12 mt-8">
           <RecipeBanner
@@ -39,11 +43,13 @@ export const DetailRecipe = async ({ id }: { id: string }) => {
             score={count}
             idRecipe={idRecipe}
             isLike={isLike}
+            images={recipe.images || []}
           />
           <RecipeSummary
             recipeTypeName={recipeTypeName}
             cookingTime={cookingTime}
           />
+          <RecipeImages images={allImages} />
           <RecipeDescription description={detail} />
           <RecipePreparation steps={steps} />
           <RecipeCreator
