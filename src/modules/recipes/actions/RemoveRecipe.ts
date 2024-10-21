@@ -4,18 +4,18 @@ import { API } from "@/modules/core/utils";
 import { revalidatePath } from "next/cache";
 import { PATH } from "../constants";
 
-export const removeRecipeLikeService = async (id: number) => {
+export const removeRecipeService = async (id: number) => {
   try {
-    const { status } = await API.delete(`like/${id}`);
-    const isOk = status === 204;
+    const { status } = await API.delete(`recipe/${id}`);
+    const isOk = status === 200;
     if (isOk) {
-      revalidatePath(`/${PATH.recipeDetail}/${id}`, "page");
+      revalidatePath(`/${PATH.myRecipes}`, "page");
     }
     return {
       isOk,
       message: isOk
-        ? "Se removió destacado con éxito"
-        : "Hubo un error al intentar remover destacado",
+        ? "Se removió receta con éxito"
+        : "Hubo un error al intentar remover receta",
     };
   } catch (error) {
     console.error(error);
