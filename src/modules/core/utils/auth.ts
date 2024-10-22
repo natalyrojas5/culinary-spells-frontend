@@ -1,6 +1,14 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { API } from ".";
+interface UserToken {
+  user: {
+    email: string;
+    name: string;
+  };
+  jwtToken: string;
+  expires: string;
+}
 
 export const authConfig: NextAuthOptions = {
   pages: {
@@ -14,7 +22,7 @@ export const authConfig: NextAuthOptions = {
       return token;
     },
     session({ session, token }) {
-      session = token.user as any;
+      session = token.user as UserToken;
       return session;
     },
   },
