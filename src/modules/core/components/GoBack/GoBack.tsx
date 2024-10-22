@@ -7,17 +7,17 @@ import { IoIosArrowBack } from "react-icons/io";
 
 interface IProps {
   text?: string;
-  path?: string;
+  toRecipes?: boolean;
 }
-export const GoBack = ({ text = "Regresar", path = "" }: IProps) => {
+export const GoBack = ({ text = "Regresar", toRecipes }: IProps) => {
   const {
     purpleDark: { size, type },
   } = BUTTON;
 
   const router = useRouter();
   const goBack = () => {
-    if (path) {
-      router.push(path);
+    if (toRecipes) {
+      router.push('/recetas');
     } else {
       router.back();
     }
