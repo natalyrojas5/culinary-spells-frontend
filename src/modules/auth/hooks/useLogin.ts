@@ -6,11 +6,9 @@ import { useForm } from "@/modules/core/hooks";
 import { formatErrors } from "@/modules/core/utils";
 import { SchemaLoginUser } from "../schemas";
 import { loginService } from "../actions";
-import { useRouter } from "next/navigation";
 import { PATH } from "@/modules/recipes/constants";
 
 export const useLogin = () => {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const { values, handleChange, resetForm } = useForm({
     password: "",
@@ -49,7 +47,7 @@ export const useLogin = () => {
 
       if (isOk) {
         resetForm();
-        router.push(`/${PATH.recipes}`);
+        window.location.href = `/${PATH.recipes}`;
       }
     } catch (error) {
       console.error(error);

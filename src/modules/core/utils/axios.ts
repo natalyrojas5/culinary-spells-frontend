@@ -6,7 +6,10 @@ const baseURL = process.env.NEXT_PUBLIC_API;
 export const API = axios.create({ baseURL });
 API.interceptors.request.use(
   async (config) => {
-    config.headers["Content-Type"] = "application/json";
+    if(config.headers["Content-Type"] !==  "multipart/form-data")
+      config.headers["Content-Type"] = "application/json";
+    else
+      config.headers["Content-Type"] = "multipart/form-data";
     try {
       const token = await getToken();
       if (token) {

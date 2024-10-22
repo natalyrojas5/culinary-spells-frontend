@@ -36,6 +36,7 @@ export const Banner = () => {
   return (
     <section className="flex gap-8 items-center text-white">
       <Image width={240} height={80} src={pumpkin} alt="Pumpkin" />
+
       <div>
         <h1
           className={`text-4xl leading-6 font-bold ${fontMonomaniacOne.className} mb-6`}
