@@ -47,6 +47,7 @@ export const DetailRecipe = async ({ id }: { id: string }) => {
             isLike={isLike}
             images={recipe.images || []}
           />
+          <RecipeDescription description={detail} />
           <RecipeSummary
             recipeTypeName={recipeTypeName}
             cookingTime={cookingTime}
