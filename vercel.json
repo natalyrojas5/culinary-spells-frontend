@@ -1,0 +1,9 @@
+{
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "https://culinary-spells-frontend.netlify.app",
+        "permanent": true
+      }
+    ]
+  }
