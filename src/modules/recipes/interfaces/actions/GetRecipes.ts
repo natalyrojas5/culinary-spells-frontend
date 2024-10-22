@@ -10,8 +10,14 @@ export interface IRecipe {
   images: IRecipeImage[];
   count: number;
   idRecipe: number;
+  isLike?: boolean;
 }
 
 export interface IGetRecipesSuccessResponse extends IResponseAPI {
+  data: IRecipe[];
+}
+
+export interface IGetRecipesResponse {
+  isOk: boolean;
   data: IRecipe[];
 }

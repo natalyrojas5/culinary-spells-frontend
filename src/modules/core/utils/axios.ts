@@ -1,16 +1,22 @@
 import axios from "axios";
-import { authConfig } from ".";
-import { getServerSession } from "next-auth";
+import { getToken } from "./getToken";
 
 const baseURL = process.env.NEXT_PUBLIC_API;
 
 export const API = axios.create({ baseURL });
 API.interceptors.request.use(
   async (config) => {
-    config.headers["Content-Type"] = "application/json";
-    const session = await getServerSession(authConfig);
-    if(session?.jwtToken) {
-      config.headers.Authorization = `Bearer ${session.jwtToken}`;
+    if(config.headers["Content-Type"] !==  "multipart/form-data")
+      config.headers["Content-Type"] = "application/json";
+    else
+      config.headers["Content-Type"] = "multipart/form-data";
+    try {
+      const token = await getToken();
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    } catch (error) {
+      console.error("Error getting session:", error);
     }
     return config;
   },

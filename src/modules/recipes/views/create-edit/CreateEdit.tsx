@@ -1,15 +1,19 @@
-"use client";
-
 import { GoBack } from "@/modules/core/components";
 import { fontMonomaniacOne } from "@/modules/core/utils";
-import { FormCreateEditRecipe } from "@/modules/recipes/components";
+import {
+  FormCreateEditRecipe,
+  ModalRecipeTypes,
+} from "@/modules/recipes/components";
 import { RECIPE_FORM_TITLES } from "../../constants";
+import { getRecipeTypesService } from "../../actions";
 
 interface IProps {
   isAdd: boolean;
 }
 
-export const ViewCreateEdit = ({ isAdd }: IProps) => {
+export const ViewCreateEdit = async ({ isAdd }: IProps) => {
+  const response = await getRecipeTypesService();
+  const typesRecipes = response?.data || [];
   return (
     <>
       <GoBack />
@@ -20,7 +24,8 @@ export const ViewCreateEdit = ({ isAdd }: IProps) => {
           {isAdd ? RECIPE_FORM_TITLES.CREATE : RECIPE_FORM_TITLES.EDIT}
         </h1>
       </header>
-      <FormCreateEditRecipe isAdd />
+      <FormCreateEditRecipe isAdd typesRecipes={typesRecipes} />
+      <ModalRecipeTypes />
     </>
   );
 };

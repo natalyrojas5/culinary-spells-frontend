@@ -5,6 +5,7 @@ declare module "next-auth" {
     user: {
       email: string;
       name: string;
+      featuredRecipesExist: boolean;
     };
     jwtToken: string;
   }

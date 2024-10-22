@@ -1,16 +1,14 @@
 import { API } from "@/modules/core/utils";
-import { IRegisterUser } from "@/modules/auth/interfaces";
+import { IRegisterRequest, IRegisterResponse } from "@/modules/auth/interfaces";
 
-export const registerUserService = async (
-  user: IRegisterUser
-): Promise<{
-  isOk: boolean;
-  message: string;
-}> => {
+export const registerService = async (
+  user: IRegisterRequest
+): Promise<IRegisterResponse> => {
   try {
     const { status, data } = await API.post("register", user);
 
     const isOk = status === 201;
+
     return {
       isOk,
       message: isOk

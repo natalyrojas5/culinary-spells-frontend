@@ -6,6 +6,12 @@ interface IStep {
   detail: string;
   orderNum: number;
 }
+
+interface IImage {
+  idImage: number;
+  major: number;
+  link: string;
+}
 export interface IDetailRecipe {
   idRecipe: number;
   name: string;
@@ -14,6 +20,7 @@ export interface IDetailRecipe {
   cookingTime: string;
   recipeTypes: number;
   recipeTypeName: string;
+  isLike: boolean;
 
   user: {
     idUser: number;
@@ -26,6 +33,7 @@ export interface IDetailRecipe {
     gender: number;
   };
   steps: IStep[];
+  images: IImage[];
 }
 
 export interface IGetRecipeSuccessResponse extends IResponseAPI {

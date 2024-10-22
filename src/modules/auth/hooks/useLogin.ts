@@ -1,14 +1,14 @@
+"use client";
+
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useForm } from "@/modules/core/hooks";
 import { formatErrors } from "@/modules/core/utils";
 import { SchemaLoginUser } from "../schemas";
-import { loginUserService } from "../actions";
-import { useRouter } from "next/navigation";
+import { loginService } from "../actions";
 import { PATH } from "@/modules/recipes/constants";
 
-export const useLoginUser = () => {
-  const router = useRouter()
+export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { values, handleChange, resetForm } = useForm({
     password: "",
@@ -42,12 +42,12 @@ export const useLoginUser = () => {
       form.append("password", password);
       form.append("email", email);
 
-      const response = await loginUserService(form);
+      const response = await loginService(form);
       const isOk = response?.ok;
 
       if (isOk) {
         resetForm();
-        router.push(`/${PATH.recipes}`);
+        window.location.href = `/${PATH.recipes}`;
       }
     } catch (error) {
       console.error(error);

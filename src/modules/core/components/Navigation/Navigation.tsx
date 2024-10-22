@@ -8,20 +8,25 @@ import { PATH } from "@/modules/auth/constants";
 import { PATH as PATH_RECIPES } from "@/modules/recipes/constants";
 import { BUTTON } from "@/modules/core/constants";
 import { UserLogged } from "../UserLogged";
-import { useAuthenticated } from "../../hooks";
+import { useAuthenticated, useNavigation } from "../../hooks";
+import { usePathname } from "next/navigation";
 
 export const Navigation = () => {
   const {
     goldenYellow: { size, type },
+    purple,
   } = BUTTON;
 
   const { isAuthenticated } = useAuthenticated();
+  const { goToMyRecipes, isOpen, logout } = useNavigation();
+  const pathName = usePathname();
+  const IS_LOGIN = pathName.includes("iniciar");
 
   return (
     <header
       className={`${fontJollyLodger.className} bg-purple-700 p-6 border-b-8 c-border-golden-yellow sticky top-0 w-full z-10`}
     >
-      <nav className="flex justify-between items-center content">
+      <nav className="flex justify-between items-center content relative">
         <Link
           href={isAuthenticated ? `/${PATH_RECIPES.recipes}` : "/"}
           className="flex items-center gap-4"
@@ -34,10 +39,38 @@ export const Navigation = () => {
         </Link>
         {isAuthenticated ? (
           <UserLogged />
+        ) : IS_LOGIN ? (
+          <Link
+            href={`/${PATH_RECIPES.recipes}`}
+            className={`${size.big} ${type.base}`}
+          >
+            Recetas
+          </Link>
         ) : (
-          <Link href={PATH.login} className={`${size.big} ${type.base}`}>
+          <Link href={`/${PATH.login}`} className={`${size.big} ${type.base}`}>
             Iniciar Sesión
           </Link>
+        )}
+        {isOpen && (
+          <div
+            className="absolute right-0 w-[350px] bg-purple-700 p-6 rounded-lg text-white"
+            style={{
+              bottom: "-12.5rem",
+            }}
+          >
+            <button
+              onClick={goToMyRecipes}
+              className={`${purple.size.medium} ${purple.type.base} w-full mb-3`}
+            >
+              Mis recetas
+            </button>
+            <button
+              className={`${purple.size.medium} ${purple.type.base} w-full`}
+              onClick={logout}
+            >
+              Cerrar Sesión
+            </button>
+          </div>
         )}
       </nav>
     </header>

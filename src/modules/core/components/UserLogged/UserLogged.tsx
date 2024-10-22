@@ -2,11 +2,16 @@
 
 import { fontMali } from "@/modules/core/utils";
 import { RxAvatar } from "react-icons/rx";
-import { IoIosArrowDown } from "react-icons/io";
-import { useAuthenticated } from "../../hooks";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { useAuthenticated, useNavigation } from "../../hooks";
 
 export const UserLogged = () => {
   const { user: userLogged } = useAuthenticated();
+  const { setIsOpen, isOpen } = useNavigation();
+  const styleIcon = {
+    size: 30,
+    className: "cursor-pointer",
+  };
 
   return (
     <article
@@ -17,7 +22,11 @@ export const UserLogged = () => {
         <p className="font-semibold text-md"> {userLogged?.name || "-"}</p>
         <p className="text-xs"> {userLogged?.email || "-"} </p>
       </header>
-      <IoIosArrowDown size={30} className="cursor-pointer" />
+      {isOpen ? (
+        <IoIosArrowUp {...styleIcon} onClick={() => setIsOpen(false)} />
+      ) : (
+        <IoIosArrowDown {...styleIcon} onClick={() => setIsOpen(true)} />
+      )}
     </article>
   );
 };

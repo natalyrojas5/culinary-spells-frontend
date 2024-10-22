@@ -3,11 +3,15 @@ import { FormCreateAccount } from "@/modules/auth/components";
 
 import { PATH } from "@/modules/auth/constants";
 import Link from "next/link";
-import { getCountries } from "@/modules/core/actions";
+import { getCountriesService } from "@/modules/core/actions";
 
-export const ViewCreateAccount = async() => {
-  const { data } = (await getCountries()) || { data: [] };
-  const countries = data.map(({ idCountry, niceName }) => ({ value: idCountry, text: niceName }));
+export const ViewCreateAccount = async () => {
+  const { data } = await getCountriesService();
+
+  const countries = data?.map(({ idCountry, niceName }) => ({
+    value: idCountry,
+    text: niceName,
+  }));
 
   return (
     <section className="text-center">

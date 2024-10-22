@@ -1,6 +1,15 @@
-import NextAuth, { NextAuthOptions, User } from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { API } from ".";
+interface UserToken {
+  user: {
+    email: string;
+    name: string;
+    featuredRecipesExist: boolean;
+  };
+  jwtToken: string;
+  expires: string;
+}
 
 export const authConfig: NextAuthOptions = {
   pages: {
@@ -14,7 +23,7 @@ export const authConfig: NextAuthOptions = {
       return token;
     },
     session({ session, token }) {
-      session = token.user as any;
+      session = token.user as UserToken;
       return session;
     },
   },
@@ -33,7 +42,7 @@ export const authConfig: NextAuthOptions = {
         },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         if (!credentials) {
           throw new Error("Credenciales no proporcionadas");
         }
