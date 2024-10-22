@@ -19,7 +19,6 @@
 2. Correr app `npm run dev`
 
 ## 🙋‍♂️ Usuario para pruebas
-
-1. email -> hackathon@gmail.com
-2. password -> Admin@123
+- email -> hackathon@gmail.com
+- password -> Admin@123
 
