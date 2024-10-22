@@ -88,7 +88,7 @@ export const FormCreateEditRecipe = ({
         options={formatRecipeTypes}
         onChange={handleChange}
       />
-      <UploadImage
+      {/* <UploadImage
         label="[1] Imagen Secundaria (opcional)"
         labelBtnUpload={imagesPreview[1].imageUrl === "" ? "Subir Foto" : "Cambiar Foto"}        isAdd={isAdd}
         name="image2"
@@ -133,7 +133,7 @@ export const FormCreateEditRecipe = ({
             return prevState.map((image) => image.name === name ? { id : value.public_id , imageUrl : value.url , name : name } : image);
           })
         }}
-      />
+      /> */}
 
       <TextArea
         isTextWhite={isAdd}
