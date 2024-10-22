@@ -5,6 +5,7 @@ interface UserToken {
   user: {
     email: string;
     name: string;
+    featuredRecipesExist: boolean;
   };
   jwtToken: string;
   expires: string;
