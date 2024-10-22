@@ -91,7 +91,7 @@ export const Recipe = ({
         <p className="text-center font-semibold text-2xl mb-2 c-txt-golden-yellow">
           Votos: {count === 0 ? "-" : count}
         </p>
-        <p className="text-lg">{name}</p>
+        <p className="text-lg font-bold">{name}</p>
         <p className="text-lg line-clamp-2">{detail ? detail : "Sin descripción"}</p>
       </div>
       <button
