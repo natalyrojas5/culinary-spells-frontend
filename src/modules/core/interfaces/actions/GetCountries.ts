@@ -5,6 +5,11 @@ export interface ICountry {
   niceName: string;
   iso3: string;
 }
-export interface IGetContries extends IResponseAPI {
+export interface IGetContriesSuccess extends IResponseAPI {
+  data: ICountry[];
+}
+
+export interface IGetCountriesResponseSuccess {
+  isOk: boolean;
   data: ICountry[];
 }

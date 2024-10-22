@@ -6,8 +6,9 @@ import Link from "next/link";
 import { getCountriesService } from "@/modules/core/actions";
 
 export const ViewCreateAccount = async () => {
-  const { data } = (await getCountriesService()) || { data: [] };
-  const countries = data.map(({ idCountry, niceName }) => ({
+  const { data } = await getCountriesService();
+
+  const countries = data?.map(({ idCountry, niceName }) => ({
     value: idCountry,
     text: niceName,
   }));
