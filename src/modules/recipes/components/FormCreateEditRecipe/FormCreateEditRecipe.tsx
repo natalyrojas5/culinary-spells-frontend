@@ -10,7 +10,7 @@ import { fontJollyLodger } from "@/modules/core/utils";
 import { FormStep } from "../FormStep";
 import { TextArea } from "@/modules/core/components/TextArea";
 import { UploadImage } from "../UploadImage";
-import { MODAL, RECIPE_FORM_FILTERS } from "../../constants";
+import { MODAL } from "../../constants";
 import { useModalStore } from "@/modules/core/stores";
 import { IRecipeType } from "../../interfaces";
 import { useAddRecipe } from "../../hooks";
@@ -56,9 +56,8 @@ export const FormCreateEditRecipe = ({
         label="Imagen Principal *"
         labelBtnUpload={isAdd ? "Subir Foto" : "Cambiar Foto"}
         isAdd={isAdd}
-        filters={RECIPE_FORM_FILTERS}
         urlImagePreview=""
-        name=""
+        name="imageMain"
       />
 
       <SelectWithLabel
@@ -78,7 +77,6 @@ export const FormCreateEditRecipe = ({
         label="[1] Imagen Secundaria (opcional)"
         labelBtnUpload={isAdd ? "Subir Foto" : "Cambiar Foto"}
         isAdd={isAdd}
-        filters={RECIPE_FORM_FILTERS}
         urlImagePreview=""
         name=""
       />
@@ -86,7 +84,6 @@ export const FormCreateEditRecipe = ({
         label="[2] Imagen Secundaria (opcional)"
         labelBtnUpload={isAdd ? "Subir Foto" : "Cambiar Foto"}
         isAdd={isAdd}
-        filters={RECIPE_FORM_FILTERS}
         urlImagePreview=""
         name=""
       />
@@ -94,7 +91,6 @@ export const FormCreateEditRecipe = ({
         label="[3] Imagen Secundaria (opcional)"
         labelBtnUpload={isAdd ? "Subir Foto" : "Cambiar Foto"}
         isAdd={isAdd}
-        filters={RECIPE_FORM_FILTERS}
         urlImagePreview=""
         name=""
       />
