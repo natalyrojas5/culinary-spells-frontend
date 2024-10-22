@@ -15,7 +15,7 @@ export const FeaturedRecipes = async () => {
 
     if (isOk && hasRecipes) {
       return (
-        <section className="mt-10">
+        <section className="mt-10" id="recipesFeatured">
           <h2
             className={`text-3xl c-txt-golden-yellow ${fontMonomaniacOne.className} mb-6`}
           >
