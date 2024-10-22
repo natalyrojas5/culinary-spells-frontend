@@ -58,7 +58,7 @@ export const FeaturedRecipe = async () => {
             </header>
             <div className="text-black text-md flex gap-2 flex-col mt-6">
               <p className="font-bold text-2xl">{name}</p>
-              <p>{detail}</p>
+              <p className="line-clamp-2">{detail}</p>
             </div>
             <RecipeCreatorSmall
               name={`${userName} ${userLastname}`}
