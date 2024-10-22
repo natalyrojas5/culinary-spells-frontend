@@ -26,11 +26,11 @@ export const FormStep = ({ isAdd = true }: IProps) => {
             <InputWithLabel
               isTextWhite={isAdd}
               label=""
-              name="order"
+              name="orderNum"
               onChange={handleChange}
               value={
-                currentStep?.order
-                  ? currentStep.order
+                currentStep.orderNum
+                  ? currentStep.orderNum
                   : String(steps.length + 1)
               }
               type="text"
@@ -42,10 +42,10 @@ export const FormStep = ({ isAdd = true }: IProps) => {
             <InputWithLabel
               label=""
               isTextWhite={isAdd}
-              name="description"
+              name="detail"
               type="text"
               onChange={handleChange}
-              value={currentStep?.description}
+              value={currentStep?.detail}
               placeholder="Ingresa descripción"
             />
           </div>
@@ -54,6 +54,7 @@ export const FormStep = ({ isAdd = true }: IProps) => {
 
       <div className="flex gap-4 justify-end w-full">
         <button
+          type="button"
           onClick={addStep}
           className={`
                     ${size.big} ${type.base} ${fontJollyLodger.className} mt-2 text-left`}
@@ -62,6 +63,7 @@ export const FormStep = ({ isAdd = true }: IProps) => {
         </button>
         {hasSteps && (
           <button
+            type="button"
             onClick={resetSteps}
             className={`
                     ${size.big} ${type.base} ${fontJollyLodger.className} mt-2 text-left`}

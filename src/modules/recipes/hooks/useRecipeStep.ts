@@ -5,8 +5,8 @@ import { formatErrors } from "@/modules/core/utils";
 import { toast } from "react-toastify";
 
 const initialStateStep = {
-  order: "",
-  description: "",
+  orderNum: "",
+  detail: "",
   id: "",
 };
 
@@ -17,16 +17,18 @@ export const useRecipeStep = () => {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { value } = e.target;
-    setRecipe({ currentStep: { ...currentStep, description: value } });
+    setRecipe({ currentStep: { ...currentStep, detail: value } });
   };
 
   const isFormValid = () => {
     const step = {
-      name: currentStep.id,
-      description: currentStep.description,
-      orderNum: currentStep.order,
+      name: "step" + steps.length,
+      detail: currentStep.detail,
+      orderNum: (steps.length + 1).toString(),
     };
     const stepValidate = SchemaStep.safeParse(step);
+
+    console.log(stepValidate)
 
     if (!stepValidate.success) {
       const formattedErrors = formatErrors(stepValidate.error.errors);
@@ -43,9 +45,9 @@ export const useRecipeStep = () => {
     if (!isValid) return;
 
     const newStep: StateStep = {
-      order: String(steps.length + 1) || "",
-      description: currentStep?.description || "",
-      id: crypto.randomUUID(),
+      orderNum: String(steps.length + 1) || "",
+      detail: currentStep?.detail || "",
+      name: "step" + steps.length,
     };
 
     setRecipe({ steps: [...steps, newStep] });

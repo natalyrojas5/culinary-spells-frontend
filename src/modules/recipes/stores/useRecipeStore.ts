@@ -1,9 +1,9 @@
 import { create } from "zustand";
 
 export interface StateStep {
-  order: string;
-  description: string;
-  id: string;
+  orderNum: string;
+  detail: string;
+  name: string;
 }
 
 interface StateRecipe {
@@ -26,9 +26,9 @@ export const useRecipeStore = create<StateStore>()((set) => ({
 
   steps: [],
   currentStep: {
-    order: "",
-    description: "",
-    id: "",
+    orderNum: "",
+    detail: "",
+    name: "",
   },
   setRecipe: (recipe) => set((state) => ({ ...state, ...recipe })),
 }));
