@@ -8,7 +8,7 @@ export const getCountriesService =
   async (): Promise<IGetCountriesResponseSuccess> => {
     try {
       const { data: dataAxios } = await API.get("country");
-      let { message, data } = dataAxios as IGetContriesSuccess;
+      const { message, data } = dataAxios as IGetContriesSuccess;
 
       return {
         isOk: message === "success",

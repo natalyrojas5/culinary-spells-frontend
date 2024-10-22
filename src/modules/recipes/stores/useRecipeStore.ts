@@ -13,6 +13,7 @@ interface StateRecipe {
   time: string;
   steps: StateStep[];
   currentStep: Partial<StateStep>;
+  resetForm: () => void;
 }
 interface StateStore extends StateRecipe {
   setRecipe: (recipe: Partial<StateRecipe>) => void;
@@ -31,4 +32,12 @@ export const useRecipeStore = create<StateStore>()((set) => ({
     name: "",
   },
   setRecipe: (recipe) => set((state) => ({ ...state, ...recipe })),
+  resetForm: () => set({
+    name: '',
+    description: '',
+    recipeType: '',
+    time: '',
+    steps: [],
+    currentStep: { orderNum: '', detail: '', name: '' },
+  }),
 }));

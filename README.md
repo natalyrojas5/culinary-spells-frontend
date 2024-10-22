@@ -2,8 +2,15 @@
 
 ## ⚒️ Tecnologías usadas
 
-- Next 14
+- **Next 14**
 - TailwindCSS
+- Zustand
+- Zod
+- Axios
+- **Cloudinary**
+- React Icons
+- React Toastify
+- Clsx
 
 
 ## 📝 Proceso de Instalación
