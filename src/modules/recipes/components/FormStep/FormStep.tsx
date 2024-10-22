@@ -53,15 +53,7 @@ export const FormStep = ({ isAdd = true }: IProps) => {
       </MultipleInput>
 
       <div className="flex gap-4 justify-end w-full">
-        <button
-          type="button"
-          onClick={addStep}
-          className={`
-                    ${size.big} ${type.base} ${fontJollyLodger.className} mt-2 text-left`}
-        >
-          Agregar Paso
-        </button>
-        {hasSteps && (
+         {hasSteps && (
           <button
             type="button"
             onClick={resetSteps}
@@ -71,6 +63,14 @@ export const FormStep = ({ isAdd = true }: IProps) => {
             Resetear Pasos
           </button>
         )}
+        <button
+          type="button"
+          onClick={addStep}
+          className={`
+                    ${size.big} ${type.base} ${fontJollyLodger.className} mt-2 text-left`}
+        >
+          Agregar Paso
+        </button>
       </div>
     </>
   );
