@@ -5,7 +5,7 @@ export * from "./Recipe";
 export * from "./Recipes";
 export * from "./DetailRecipe";
 export * from "./FormCreateEditRecipe";
-export * from "./AddEditSteps";
+export * from "./FormStep";
 export * from "./MyRecipe";
 export * from "./MyRecipes";
 export * from "./UploadImage";

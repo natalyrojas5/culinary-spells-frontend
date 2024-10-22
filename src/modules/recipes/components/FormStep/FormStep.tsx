@@ -1,68 +1,74 @@
 import { InputWithLabel, MultipleInput } from "@/modules/core/components";
 import { BUTTON } from "@/modules/core/constants";
 import { fontJollyLodger } from "@/modules/core/utils";
+import { useRecipeStep } from "../../hooks";
+import { Step } from "./Step";
 
 interface IProps {
   isAdd: boolean;
-  steps: Array<object>;
 }
 
-export const AddEditSteps = ({ isAdd = true, steps = [] }: IProps) => {
+export const FormStep = ({ isAdd = true }: IProps) => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
+  const { handleChange, currentStep, steps, addStep, resetSteps } =
+    useRecipeStep();
+  const hasSteps = steps.length > 0;
   return (
     <>
       <MultipleInput label="Pasos de preparación*" isAdd={isAdd}>
+        {hasSteps &&
+          steps.map((step) => <Step {...step} key={crypto.randomUUID()} />)}
+
         <div className="grid grid-cols-3 gap-2 w-full">
-          <div className="col-span-1">
-            <h3 className="text-white text-4xl">[Orden]</h3>
-          </div>
-          <div className="col-span-2">
-            <h3 className="text-white text-4xl">[Descripción]</h3>
-          </div>
-          {(steps.length > 0 || !isAdd) && (
-            <div className="col-span-3 flex justify-end items-center gap-4 mb-4">
-              <button
-                className={`${size.medium} ${type.base} ${fontJollyLodger.className}`}
-              >
-                Editar
-              </button>
-              <button
-                className={`${size.medium} ${type.base} ${fontJollyLodger.className}`}
-              >
-                Eliminar 
-              </button>
-            </div>
-          )}
           <div className="col-span-1">
             <InputWithLabel
               isTextWhite={isAdd}
               label=""
-              name=""
+              name="order"
+              onChange={handleChange}
+              value={
+                currentStep?.order
+                  ? currentStep.order
+                  : String(steps.length + 1)
+              }
               type="text"
               placeholder="Ingresa Orden"
+              disabled
             />
           </div>
           <div className="col-span-2">
             <InputWithLabel
               label=""
               isTextWhite={isAdd}
-              name=""
+              name="description"
               type="text"
+              onChange={handleChange}
+              value={currentStep?.description}
               placeholder="Ingresa descripción"
             />
           </div>
         </div>
       </MultipleInput>
 
-      <div className="flex justify-end w-full">
+      <div className="flex gap-4 justify-end w-full">
         <button
+          onClick={addStep}
           className={`
                     ${size.big} ${type.base} ${fontJollyLodger.className} mt-2 text-left`}
         >
           Agregar Paso
         </button>
+        {hasSteps && (
+          <button
+            onClick={resetSteps}
+            className={`
+                    ${size.big} ${type.base} ${fontJollyLodger.className} mt-2 text-left`}
+          >
+            Resetear Pasos
+          </button>
+        )}
       </div>
     </>
   );

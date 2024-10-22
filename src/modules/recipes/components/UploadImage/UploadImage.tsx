@@ -41,7 +41,7 @@ export const UploadImage = ({
       <div className="grid grid-cols-3 w-full gap-10">
         <div className="col-span-2 text-center">
           <Image
-            src={urlImagePreview === '' ? empty : urlImagePreview}
+            src={urlImagePreview === "" ? empty : urlImagePreview}
             height={300}
             width={400}
             alt="Image Subida Cloudinary"

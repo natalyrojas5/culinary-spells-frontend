@@ -6,9 +6,10 @@ interface IProps {
   name: string;
   type: "text" | "email";
   required?: boolean;
-  isTextWhite?: boolean
+  isTextWhite?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
+  disabled?: boolean;
 }
 
 export const InputWithLabel = ({
@@ -19,13 +20,19 @@ export const InputWithLabel = ({
   type = "text",
   required,
   onChange,
-  value
+  value,
+  disabled,
 }: IProps) => {
   return (
     <fieldset
       className={`flex flex-col gap-3 items-start w-full ${fontMonomaniacOne.className}`}
     >
-      <label htmlFor={name} className={`${isTextWhite ? 'text-white' : 'c-txt-golden-yellow'} text-2xl`}>
+      <label
+        htmlFor={name}
+        className={`${
+          isTextWhite ? "text-white" : "c-txt-golden-yellow"
+        } text-2xl`}
+      >
         {label}
       </label>
       <input
@@ -37,6 +44,7 @@ export const InputWithLabel = ({
         required={required}
         onChange={onChange}
         value={value}
+        disabled={disabled}
       />
     </fieldset>
   );

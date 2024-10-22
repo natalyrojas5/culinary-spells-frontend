@@ -17,11 +17,17 @@ export const Banner = () => {
   const {
     goldenYellow: { size, type },
   } = BUTTON;
-  const { isAuthenticated } = useAuthenticated();
+  const { isAuthenticated, user } = useAuthenticated();
   const modalToggle = useModalStore((state) => state.toggle);
 
   const goFeaturedRecipes = () => {
     if (isAuthenticated) {
+      const recipesFeatured =
+        document.getElementById("recipesFeatured")?.offsetTop;
+      window.scrollTo({
+        top: recipesFeatured,
+        behavior: "smooth",
+      });
     } else {
       modalToggle({ isOpen: true, name: MODAL.accessRecipe });
     }
@@ -30,6 +36,7 @@ export const Banner = () => {
   return (
     <section className="flex gap-8 items-center text-white">
       <Image width={240} height={80} src={pumpkin} alt="Pumpkin" />
+
       <div>
         <h1
           className={`text-4xl leading-6 font-bold ${fontMonomaniacOne.className} mb-6`}
@@ -40,13 +47,15 @@ export const Banner = () => {
           Descubre recetas embrujadas y delicias espeluznantes para hechizar tu
           cocina en esta noche de Halloween.
         </p>
-        <button
-          className={`
+        {(user?.featuredRecipesExist || !isAuthenticated) && (
+          <button
+            className={`
           ${size.big} ${type.base} ${fontJollyLodger.className}`}
-          onClick={goFeaturedRecipes}
-        >
-          Conocer recetas destacadas
-        </button>
+            onClick={goFeaturedRecipes}
+          >
+            Conocer recetas destacadas
+          </button>
+        )}
       </div>
     </section>
   );

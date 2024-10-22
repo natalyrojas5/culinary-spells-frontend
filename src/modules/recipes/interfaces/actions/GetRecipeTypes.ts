@@ -1,6 +1,6 @@
 import { IResponseAPI } from "@/modules/core/interfaces";
 
-interface IRecipeType {
+export interface IRecipeType {
   idRecipeType: number;
   name: string;
   detail: string;
