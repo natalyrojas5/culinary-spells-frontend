@@ -48,7 +48,7 @@ export const RecipeBanner = ({
       <div
         className={`flex flex-col items-center gap-3 w-full ${fontMali.className}`}
       >
-        <h1 className="font-extrabold text-4xl c-txt-golden-yellow">{name}</h1>
+        <h1 className="font-extrabold text-4xl c-txt-golden-yellow text-center">{name}</h1>
         <p className="font-semibold text-2xl leading-4 text-white">
           Cantidad de votos: {score}
         </p>
