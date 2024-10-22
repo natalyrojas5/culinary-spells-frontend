@@ -16,7 +16,7 @@ export const RecipeCreator = ({
   countryName,
   gender = 0,
 }: IProps) => {
-  const IS_BOY = gender === 0;
+  const IS_BOY = gender === 1;
   return (
     <aside
       className={`p-8 bg-purple-700   shadow-lg rounded-lg ${fontMali.className}`}
