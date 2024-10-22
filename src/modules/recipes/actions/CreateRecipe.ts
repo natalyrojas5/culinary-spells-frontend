@@ -17,7 +17,7 @@ export const CreateRecipe = async (
       data,
     };
   } catch (error) {
-    console.error(error);
+    console.error(error.response.data);
     return {
       isOk: false,
       data: [],
