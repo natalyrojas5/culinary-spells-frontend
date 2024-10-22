@@ -1,13 +1,13 @@
 import { Recipe } from "@/modules/recipes/components";
 import { fontMonomaniacOne } from "@/modules/core/utils";
-import { getRecipesFeatured } from "../../actions";
+import { getRecipesFeaturedService } from "../../actions";
 import { IGetRecipesFeaturedResponse } from "../../interfaces";
 import { NotFound } from "@/modules/core/components";
 
 export const FeaturedRecipes = async () => {
   try {
     const responseRecipes: IGetRecipesFeaturedResponse =
-      await getRecipesFeatured();
+      await getRecipesFeaturedService();
 
     const isOk = responseRecipes?.isOk;
     const recipes = responseRecipes?.data || [];
@@ -23,7 +23,7 @@ export const FeaturedRecipes = async () => {
           </h2>
           <section className="grid grid-cols-3 gap-6">
             {recipes.map((recipe) => (
-              <Recipe isHighlighted {...recipe} />
+              <Recipe isHighlighted {...recipe} key={crypto.randomUUID()} />
             ))}
           </section>
         </section>

@@ -1,16 +1,18 @@
 import { NotFound } from "@/modules/core/components";
 import { RecipeBanner } from ".";
-import { getRecipe } from "../../actions";
+import { getRecipeService } from "../../actions";
 import { IGetRecipeResponse } from "../../interfaces";
 import { RecipeCreator } from "./RecipeCreator";
 import { RecipeDescription } from "./RecipeDescription";
 import { RecipePreparation } from "./RecipePreparation";
 import { RecipeSummary } from "./RecipeSummary";
-import {  RecipeImages } from "./RecipeImages";
+import { RecipeImages } from "./RecipeImages";
 
 export const DetailRecipe = async ({ id }: { id: string }) => {
   try {
-    const responseRecipe: IGetRecipeResponse = await getRecipe(Number(id));
+    const responseRecipe: IGetRecipeResponse = await getRecipeService(
+      Number(id)
+    );
     const isOk = responseRecipe?.isOk;
     const recipe = responseRecipe?.data[0];
 

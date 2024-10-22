@@ -4,7 +4,7 @@ import {
   IGetRecipeTypesSuccessResponse,
 } from "../interfaces";
 
-export const getRecipeTypes = async (): Promise<IGetRecipeTypesResponse> => {
+export const getRecipeTypesService = async (): Promise<IGetRecipeTypesResponse> => {
   try {
     const { data: dataAxios } = await API.get("recipetypes");
     const { message, data } = dataAxios as IGetRecipeTypesSuccessResponse;

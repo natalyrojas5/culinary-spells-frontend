@@ -2,7 +2,7 @@ import { authConfig, fontMonomaniacOne } from "@/modules/core/utils";
 import { Recipe } from "../Recipe";
 import { IGetRecipesResponse } from "@/modules/recipes/interfaces";
 import { getServerSession } from "next-auth";
-import { getRecipes } from "../../actions";
+import { getRecipesServices } from "../../actions";
 import { NotFound } from "@/modules/core/components";
 
 export const Recipes = async () => {
@@ -10,7 +10,7 @@ export const Recipes = async () => {
     const session = await getServerSession(authConfig);
     const isLogged = !!session?.user;
 
-    const responseRecipes: IGetRecipesResponse = await getRecipes();
+    const responseRecipes: IGetRecipesResponse = await getRecipesServices();
     const isOk = responseRecipes?.isOk;
 
     const recipesForLogged = responseRecipes?.data || [];

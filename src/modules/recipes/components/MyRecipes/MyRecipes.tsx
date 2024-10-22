@@ -1,11 +1,11 @@
 import { MyRecipe } from "..";
-import { getMyRecipes } from "../../actions";
+import { getMyRecipesService } from "../../actions";
 import { IGetRecipesResponse } from "../../interfaces";
 import { NotFound } from "@/modules/core/components";
 
 export const MyRecipes = async () => {
   try {
-    const responseRecipes: IGetRecipesResponse = await getMyRecipes();
+    const responseRecipes: IGetRecipesResponse = await getMyRecipesService();
     const isOk = responseRecipes?.isOk;
 
     const recipes = responseRecipes?.data || [];
@@ -14,7 +14,7 @@ export const MyRecipes = async () => {
       return (
         <section className="grid grid-cols-3 gap-6 mt-8">
           {recipes.map((recipe) => (
-            <MyRecipe {...recipe} />
+            <MyRecipe {...recipe} key={crypto.randomUUID()} />
           ))}
         </section>
       );
