@@ -18,7 +18,7 @@ export const MyRecipe = ({
 }: IRecipe) => {
   const { goldenYellow, orange } = BUTTON;
   const { deleteRecipe } = useRemoveRecipe();
-  const buttonClass = `${fontJollyLodger.className} w-full flex gap-1 items-center`;
+  const buttonClass = `${fontJollyLodger.className} w-full flex justify-center gap-1 items-center`;
 
   const firtImage = images[0]?.link;
   const hasImage = firtImage?.startsWith("http");
@@ -54,13 +54,6 @@ export const MyRecipe = ({
         </button>
 
         <div className="flex gap-2">
-          <button
-            className={`${orange.size.medium} ${orange.type.base} ${buttonClass}`}
-          >
-            <MdEdit />
-            Editar
-          </button>
-
           <button
             className={`${orange.size.medium} ${orange.type.base} ${buttonClass}`}
             onClick={() => deleteRecipe(idRecipe)}

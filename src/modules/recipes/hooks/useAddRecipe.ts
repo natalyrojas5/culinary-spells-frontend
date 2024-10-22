@@ -11,17 +11,17 @@ import { useRouter } from "next/navigation";
 import { CreateRecipe } from "../actions";
 
 export const useAddRecipe = () => {
-  const router = useRouter()
-  const { name, description, recipeType, setRecipe , steps } = useRecipeStore();
+  const router = useRouter();
+  const { name, description, recipeType, setRecipe, steps } = useRecipeStore();
   const [timeNum, setTimeNum] = useState("");
   const [timeUnit, setTimeUnit] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isAddView, setIsAddView] = useState(true)
+  const [isAddView, setIsAddView] = useState(true);
   const [imagesPreview, setImagesPreview] = useState([
-    { id: "", imageUrl: "", name: ""},
-    { id: "", imageUrl: "", name: ""},
-    { id: "", imageUrl: "", name: ""},
-    { id: "", imageUrl: "", name: ""}
+    { id: "", imageUrl: "", name: "" },
+    { id: "", imageUrl: "", name: "" },
+    { id: "", imageUrl: "", name: "" },
+    { id: "", imageUrl: "", name: "" },
   ]);
 
   const handleChange = (
@@ -37,45 +37,43 @@ export const useAddRecipe = () => {
     }
   };
 
-  const getImagePromt = async (prompt: string, idImage: string, name: string) => {
-    const toastLoader = toast.loading(
-      "Generando imagen",
-      {
-        position: "top-right",
-      }
-    );
+  const getImagePromt = async (
+    prompt: string,
+    idImage: string,
+    name: string
+  ) => {
+    const toastLoader = toast.loading("Generando imagen", {
+      position: "top-right",
+    });
     const urlNewPhoto = getCldImageUrl({
       src: idImage,
       replaceBackground: prompt,
     });
-    
-    const responseFetch =  await fetch(urlNewPhoto)
-    
-    toast.done(toastLoader)
 
-    if(responseFetch.ok){
+    const responseFetch = await fetch(urlNewPhoto);
+
+    toast.done(toastLoader);
+
+    if (responseFetch.ok) {
       const updatedItems = Object.values(imagesPreview).map((image) =>
         image.id === idImage
           ? { id: idImage, imageUrl: urlNewPhoto, name: name }
           : image
       );
-  
+
       setImagesPreview(updatedItems);
       toast.success(
-        "Imagen subida para modificar espere un momento a que cargue la nueva imagen generada",
+        "Imagen cargada. Espere mientras se genera la nueva imagen.",
         {
           position: "top-right",
         }
       );
-    }else{
-      toast.error(
-        "Ha ocurrido un error porfavor cambie de foto o reintente de nuevo",
-        {
-          position: "top-right",
-        }
-      );
+    } else {
+      toast.error("Error ocurrido. Cambie la foto o inténtelo nuevamente.", {
+        position: "top-right",
+      });
     }
-  }
+  };
 
   const getImagesBlob = async () => {
     const images = Object.values(imagesPreview).filter((image) => {
@@ -103,8 +101,8 @@ export const useAddRecipe = () => {
         });
 
         if (blob) {
-          const url = URL.createObjectURL(blob)
-          console.log(url)
+          const url = URL.createObjectURL(blob);
+          console.log(url);
           imagesBlob.push(blob);
         } else {
           toast.error("No se pudo convertir la imagen a Blob");
@@ -117,12 +115,13 @@ export const useAddRecipe = () => {
   };
 
   const getValuesRecipeForm = async () => {
+    const timeText = timeUnit === "min" ? "Minutos" : "Horas";
     const infoData = {
       recipe: {
         name: name,
         detail: description,
         recipeTypes: recipeType,
-        cookingTime: timeUnit === "min" ?  (parseInt(timeNum) * 60).toString() : ((parseInt(timeNum)* 60)*60).toString(),
+        cookingTime: `${timeNum} ${timeText}`,
         steps: steps,
       },
       images: await getImagesBlob(),
@@ -133,32 +132,27 @@ export const useAddRecipe = () => {
 
   const isFormValid = async () => {
     const infoData = await getValuesRecipeForm();
-    console.log(infoData)
+
     const infoValidate = SchemaCreateEditRecipe.safeParse(infoData);
-    console.log(infoValidate)
+
     if (!infoValidate.success) {
       const formattedErrors = formatErrors(infoValidate.error.errors);
       const firstError = formattedErrors[0].mensaje;
       toast.error(firstError, { position: "top-right" });
-      return  { status : false , data : infoData};
+      return { status: false, data: infoData };
     }
-    return  { status : true , data : infoData};
-    
+    return { status: true, data: infoData };
   };
-
 
   const createRecipe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { status , data } = await isFormValid();
+    const { status, data } = await isFormValid();
 
     if (!status) return;
     setIsLoading(true);
-    const toastLoader = toast.loading(
-      "Creando Imagen",
-      {
-        position: "top-right",
-      }
-    );
+    const toastLoader = toast.loading("Creando Imagen", {
+      position: "top-right",
+    });
     const formData = new FormData();
     formData.append(
       "recipe",
@@ -171,14 +165,13 @@ export const useAddRecipe = () => {
 
     formData.append("majorImageIndex", data.majorImageIndex.toString());
     try {
-      const { isOk } = isAddView  ? await CreateRecipe(formData) : await CreateRecipe(formData);
+      const { isOk } = isAddView
+        ? await CreateRecipe(formData)
+        : await CreateRecipe(formData);
       if (isOk) {
-        toast.success(
-          "Receta creado correctamente, automaticamente se redirigira a la vista de sus recetas",
-          {
-            position: "top-right",
-          }
-        );
+        toast.success("Receta creada correctamente. ", {
+          position: "top-right",
+        });
         router.push(`/${PATH.myRecipes}`);
       } else {
         toast.error("No se pudo crear su receta correctamente", {
@@ -192,7 +185,20 @@ export const useAddRecipe = () => {
       });
     }
     setIsLoading(false);
-    toast.done(toastLoader)
+    toast.done(toastLoader);
   };
-  return { name, description, recipeType, timeNum, timeUnit, handleChange , imagesPreview , setImagesPreview  , getImagePromt , createRecipe  , isLoading , setIsAddView};
+  return {
+    name,
+    description,
+    recipeType,
+    timeNum,
+    timeUnit,
+    handleChange,
+    imagesPreview,
+    setImagesPreview,
+    getImagePromt,
+    createRecipe,
+    isLoading,
+    setIsAddView,
+  };
 };
