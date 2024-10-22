@@ -12,7 +12,7 @@ import { CreateRecipe } from "../actions";
 
 export const useAddRecipe = () => {
   const router = useRouter();
-  const { name, description, recipeType, setRecipe, steps } = useRecipeStore();
+  const { name, description, recipeType, setRecipe, resetForm , steps } = useRecipeStore();
   const [timeNum, setTimeNum] = useState("");
   const [timeUnit, setTimeUnit] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -150,7 +150,7 @@ export const useAddRecipe = () => {
 
     if (!status) return;
     setIsLoading(true);
-    const toastLoader = toast.loading("Creando Imagen", {
+    const toastLoader = toast.loading("Creando Receta", {
       position: "top-right",
     });
     const formData = new FormData();
@@ -193,6 +193,7 @@ export const useAddRecipe = () => {
     recipeType,
     timeNum,
     timeUnit,
+    resetForm,
     handleChange,
     imagesPreview,
     setImagesPreview,

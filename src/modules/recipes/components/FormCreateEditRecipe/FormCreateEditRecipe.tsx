@@ -38,14 +38,13 @@ export const FormCreateEditRecipe = ({
     toggle({ name: MODAL.recipeTypes, isOpen: true });
   };
 
-  const { name, description, recipeType, timeUnit, timeNum, handleChange , imagesPreview , getImagePromt , setImagesPreview , createRecipe , isLoading , setIsAddView} =
+  const { name, description, recipeType, timeUnit, timeNum, handleChange , imagesPreview , getImagePromt , setImagesPreview , createRecipe , isLoading , setIsAddView , resetForm} =
     useAddRecipe();
 
 
   useEffect(() => {
     setIsAddView(isAdd)
-    // if(!isAdd)
-    //   getInfoRecipe()
+    resetForm()
   },[])
   
   return (
