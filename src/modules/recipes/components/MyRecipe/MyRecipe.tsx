@@ -4,7 +4,7 @@ import Image from "next/image";
 import empty from "@/modules/core/assets/empty.jpg";
 import { fontJollyLodger, fontMali } from "@/modules/core/utils";
 import { BUTTON } from "@/modules/core/constants";
-import { MdEdit, MdDelete } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import { IRecipe } from "../../interfaces";
 import { useRouter } from "next/navigation";
 import { PATH } from "../../constants";
