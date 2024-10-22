@@ -45,8 +45,6 @@ export const FormCreateEditRecipe = ({
   useEffect(() => {
     setIsAddView(isAdd)
     resetForm()
-    // if(!isAdd)
-    //   getInfoRecipe()
   },[])
   
   return (
