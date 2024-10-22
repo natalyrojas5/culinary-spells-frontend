@@ -92,7 +92,7 @@ export const Recipe = ({
           Votos: {count === 0 ? "-" : count}
         </p>
         <p className="text-lg">{name}</p>
-        <p className="text-lg">{detail ? detail : "Sin descripción"}</p>
+        <p className="text-lg line-clamp-2">{detail ? detail : "Sin descripción"}</p>
       </div>
       <button
         className={`

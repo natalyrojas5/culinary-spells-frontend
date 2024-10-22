@@ -42,7 +42,7 @@ export const MyRecipe = ({
         className={`mt-4 mb-6 flex flex-col gap-1 text-white ${fontMali.className}`}
       >
         <p className="text-lg">{name}</p>
-        <p className="text-lg">{detail}</p>
+        <p className="text-lg line-clamp-2">{detail}</p>
       </div>
 
       <div className="flex gap-4 flex-col">
